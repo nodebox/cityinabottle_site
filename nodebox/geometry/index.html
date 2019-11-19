@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="en-us" />
+		<title>Geometry | NodeBox for OpenGL | City in a Bottle</title>
+		<meta http-equiv="imagetoolbar" content="no" />
+		<meta name="MSSmartTagsPreventParsing" content="true" />
+		<meta name="Copyright" content="This site's design and contents Copyright (c) 2007 City In A Bottle." />
+		<meta name="keywords" content="City in a Bottle, Creatures, Game, Python, NodeBox, evolution, open-source, blog" />
+		<link href="/media/css/screen.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="/media/css/print.css" rel="stylesheet" type="text/css" media="print" />
+		<link rel="alternate" type="application/rss+xml" title="City in a Bottle Blog" href="/rss/blog/" />
+		<script type="text/javascript" src="/media/js/swfobject.js"></script>
+		
+<script type="text/javascript" src="/media/syntax/shCore.js"></script>
+<script type="text/javascript" src="/media/syntax/shBrushPython.js"></script>
+<link type="text/css" rel="stylesheet" href="/media/syntax/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/media/syntax/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.bloggerMode = true; 
+	SyntaxHighlighter.defaults.gutter = false;
+	SyntaxHighlighter.defaults.toolbar = false;
+	SyntaxHighlighter.all({"brush":"python"});
+</script>
+
+	</head>
+<body id="documentation">
+	<div id="shadow">
+	<div id="wrap">
+		<div id="nav">
+			<a id="nav-homepage" class="first" href="/">Home</a>
+			<a id="nav-about" href="/about/">About</a>
+			<a id="nav-gallery" href="/gallery/">Gallery</a>
+			<a id="nav-download" href="/downloads/">Download</a>
+			<a id="nav-contact" href="/contact/">Contact</a>
+		</div>
+		<div id="masthead">
+			
+			<a href="/"><img src="/media/img/masthead-small3.jpg"></a>
+			
+		</div>
+		<div id="columnwrap">
+			<div id="sectionhead">
+			
+
+			</div>
+			
+		<div id="content">
+		
+<h2>NodeBox for OpenGL &raquo; Geometry </h2><p><a href="/nodebox/">NodeBox</a> module <span class="inline_code">nodebox.graphics.geometry</span> is used in various other modules to help with mathematics. Many of its functions have been optimized for performance in C. NodeBox comes with precompiled C binaries for Mac OS X, but you can compile the C source code manually for other systems. </p><p>In the <span class="inline_code">nodebox/ext/</span> folder, execute <span class="inline_code">setup.py</span> from the command line:</p><span class="install"><pre class="brush: python">&gt; cd nodebox/ext/<br />&gt; python setup.py<br /></pre></span><p>&nbsp;</p><hr size="2" width="100%" /><h2>Rotation </h2><p>Trigonometry solves day-to-day tasks in computer graphics. The commands below can be used to find the distance and angle between points in 2D space. This is often very useful because the transformation state (i.e. the sequence of <span class="inline_code">translate()</span>, <span class="inline_code">scale()</span> and <span class="inline_code">rotate()</span> commands) do not give absolute coordinates; they work in a relative way.</p><p>When we know the angle of a shape we also know its &quot;direction&quot;. Knowing the distance can tell us whether two shapes are going to intersect, or if they are close to each other and therefore in some way related. The reflection of a point can help us to construct smooth curves. </p><pre class="brush: python">angle(x0, y0, x1, y1)</pre><pre class="brush: python">distance(x0, y0, x1, y1)</pre><pre class="brush: python">coordinates(x0, y0, distance, angle)</pre><pre class="brush: python">rotate(x, y, x0, y0, angle)</pre><pre class="brush: python">reflect(x, y, x0, y0, d=1.0, a=180)</pre><ul><li><span class="inline_code">angle()</span> returns the angle between points (<span class="inline_code">x0</span>,<span class="inline_code">y0</span>) and (<span class="inline_code">x1</span>,<span class="inline_code">y1</span>).</li><li><span class="inline_code">distance()</span> returns the distance between points (<span class="inline_code">x0</span>,<span class="inline_code">y0</span>) and (<span class="inline_code">x1</span>,<span class="inline_code">y1</span>).</li><li><span class="inline_code">coordinates()</span> returns the coordinates (x,y) of a point by rotating around origin (<span class="inline_code">x0</span>,<span class="inline_code">y0</span>).</li><li><span class="inline_code">rotate()</span> returns the coordinates of (<span class="inline_code">x</span>,<span class="inline_code">y</span>) rotated around origin (<span class="inline_code">x0</span>,<span class="inline_code">y0</span>).</li><li><span class="inline_code">reflect()</span> returns the reflection of a point (x,y) through origin (<span class="inline_code">x0</span>,<span class="inline_code">y0</span>).</li></ul><p>&nbsp;</p><hr size="2" width="100%" /><h2>Interpolation </h2><p>The <span class="inline_code">lerp()</span> command returns the linear interpolation  between two numbers <span class="inline_code">a</span> and <span class="inline_code">b</span>, for time <span class="inline_code">t</span>  between 0.0-1.0. For example: <span class="inline_code">lerp(100,  200, t=0.5)</span> means we get the number halfway between 100 and 200, which is 150.</p><p>The <span class="inline_code">smoothstep()</span> command returns a smooth  transition between 0..0 and 1.0 using Hermite interpolation (cubic  spline), where <span class="inline_code">x</span> is a number  between <span class="inline_code">a</span> and <span class="inline_code">b</span>.  The return value (0.0-1.0) will ease (slow down) as <span class="inline_code">x</span> nears <span class="inline_code">a</span> or  <span class="inline_code">b</span>.</p><pre class="brush: python">lerp(a, b, t)                              # Returns a + (b-a)*t</pre><pre class="brush: python">smoothstep(a, b, x)                        # Returns 0.0-1.0 for a &lt;= x &lt;= b  </pre><pre class="brush: python">clamp(v, a, b) &nbsp;                           # Returns max(a, min(v, b)).</pre><p>&nbsp;</p><hr size="2" width="100%" /><h2>Intersection </h2><p>The <span class="inline_code">intersection()</span> command determines if two lines &ndash; or a circle and a line &ndash; intersect. It returns a list of (x,y)-tuples, where each tuple is a point of intersection. For two lines, the list will be either empty or contain a single tuple. For a circle and a line, it can contain up to two tuples.</p><p>The <span class="inline_code">point_in_polygon()</span> command returns <span class="inline_code">True</span> when the given point (x,y) is inside a polygon (given as a list of (x,y)-tuples). A ray casting algorithm is used, which determines how many times a horizontal ray starting from the point intersects with the sides of the polygon. If it is an even number of times, the point is outside, if odd, inside. </p><pre class="brush: python">intersection(x1, y1, x2, y2, x3, y3, x4, y4, infinite=False)</pre><pre class="brush: python">intersection(x, y, radius, x1, y1, x2, y2, infinite=False)</pre><pre class="brush: python">point_in_polygon(points, x, y)</pre><p class="small_text"><u><br />References</u>: <a href="http://local.wasp.uwa.edu.au/~pbourke/geometry/lineline2d/" target="_self">local.wasp.uwa.edu.au</a> (1989), <a href="http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html" target="_self">ecse.rpi.edu</a> (1970)</p><p>&nbsp;</p><hr size="2" width="100%" /><h2>Transformation matrix</h2><p>An <i>m x n</i> matrix is a table of numbers, with <i>m</i> rows and <i>n</i> columns. Because of the interesting calculations that are possible with and between matrices, they are used for many different purposes. An <i>affine transformation matrix</i> is a 3 x 3 matrix that represents position, scale, skew and rotation in a 2D space. Internally, it is used to draw transformed shapes to the canvas, or to find out if the mouse cursor is within a transformed layer.</p><p>Most notably, it can be used to transform the points of a <span class="inline_code">BezierPath</span> (there is a difference between <i>drawing</i> a path in the current transformation state or <i>having</i> an in-place transformed path).&nbsp; </p><pre class="brush: python">transform = AffineTransform(transform=None) <br /></pre><pre class="brush: python">transform.copy()<br />transform.prepend(transform)<br />transform.append(transform)</pre><pre class="brush: python">transform.identity<br />transform.inverse<br />transform.invert()<br />transform.scale(x, y=None)<br />transform.translate(x, y)<br />transform.rotate(degrees=0, radians=0)</pre><pre class="brush: python">transform.transform_point(x, y)            # Returns a (x,y)-tuple.<br />transform.transform_path(path)             # Returns a BezierPath.<br />transform.map(points=[])                   # Returns a list of (x,y)-tuples.<br /></pre><ul><li>The <span class="inline_code">AffineTransform.transform_point()</span> method applies the transformation matrix to a point and returns an (x,y)-tuple with the new coordinates.</li><li>The AffineTransform.transform_path() method applies the transformation matrix to a <span class="inline_code">BezierPath</span> and returns a new <span class="inline_code">BezierPath</span> with updated coordinates.</li></ul><p><span class="small_text">&nbsp;<u>References</u>: <a href="http://www.senocular.com/flash/tutorials/transformmatrix/" target="_self">senocular.com</a></span></p><p>&nbsp;</p><hr size="2" width="100%" /><h2>Point </h2><p>The <span class="inline_code">Point</span> object can be used to represent a point in 2D space conveniently:</p><pre class="brush: python">pt = Point(x=0, y=0)</pre><pre class="brush: python">pt.xy                                      # Tuple of (x,y)-values.<br />pt.x                                       # Horizontal position.<br />pt.y                                       # Vertical position.</pre><p>&nbsp;</p><hr size="2" width="100%" /><h2>Bounds</h2><p>The <span class="inline_code">Bounds</span> object can be used to represent a rectangular box that encompasses a transformed shape. It has a number of methods to find the encompassing bounds or overlapping parts between different bounds.</p><pre class="brush: python">b = Bounds(x, y, width, height)</pre><pre class="brush: python">b.x<br />b.y<br />b.width<br />b.height</pre><pre class="brush: python">b.copy()<br />b.contains(x, y)                           # Returns True if (x,y) inside.<br />b.contains(bounds)                         # Returns True if contains bounds.<br />b.intersects(bounds)                       # Returns True if both bounds overlap.<br />b.intersection(bounds)                     # Returns Bounds where both overlap.<br />b.union(bounds)                            # Returns Bounds that encompass both.<br /></pre><p>&nbsp;</p><hr size="2" width="100%" /><h2>Tessellation</h2><p>OpenGL can only display <i>simple</i> convex polygons directly. <br />A polygon is <i>simple</i> if: </p><ul><li>the edges intersect only at vertices, </li><li>there are no duplicate vertices, </li><li>exactly two edges meet at any vertex. </li></ul><p>Polygons containing holes or polygons with intersecting edges must first be subdivided into simple convex polygons before they can be displayed. Such subdivision is called tessellation. </p><p>The <span class="inline_code">tessellate()</span> command returns a list of triangulated (x,y)-vertices from the given list of path contours, where each contour is a list of (x,y)-tuples.</p><pre class="brush: python">tessellate(contours) </pre><p>The vertices can be drawn with <span class="inline_code">GL_TRIANGLES</span> to render a complex  polygon, for example:<br /> </p><span class="example"><pre class="brush: python">from nodebox.graphics import geometry<br /><br />glBegin(GL_TRIANGLES)<br />for x, y in geometry.tessellate(contours):<br />&nbsp;&nbsp;&nbsp; glVertex3f(x, y, 0)<br />glEnd()</pre></span><p>The <span class="inline_code">BezierPath</span> object already does this for you. </p><p><span class="small_text"><u>References</u>: <a href="http://www.supereffective.org/pages/Squirtle-SVG-Library" target="_self">supereffective.org</a> (2008) </span></p>
+
+		</div>
+		<div id="sidebar">
+		
+			<div id="search">
+				<form method="get" action="/search/">
+					<input type="text" name="q" value="">
+					<input type="submit" value="Search" >
+				</form>
+			</div>
+		
+		</div>
+
+			<br clear="both">
+		</div>
+		<div id="footer">
+			Copyright &copy; 2007 City in a Bottle. All rights reserved. With support from the Flemish Audiovisual Fund.
+		</div>
+	</div>
+	</div>
+	<img src="/media/img/shadow-bottom.png">
+
+<script type="text/javascript">
+	//var so = new SWFObject("/media/swf/banner-small.swf","movie", "900","100", "6" ,"#000000")
+	//so.write("masthead")
+</script>
+
+<script src="https://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+	_uacct = "UA-2297873-2";
+	urchinTracker();
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="en-us" />
+		<title>Sound | NodeBox for OpenGL | City in a Bottle</title>
+		<meta http-equiv="imagetoolbar" content="no" />
+		<meta name="MSSmartTagsPreventParsing" content="true" />
+		<meta name="Copyright" content="This site's design and contents Copyright (c) 2007 City In A Bottle." />
+		<meta name="keywords" content="City in a Bottle, Creatures, Game, Python, NodeBox, evolution, open-source, blog" />
+		<link href="/media/css/screen.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="/media/css/print.css" rel="stylesheet" type="text/css" media="print" />
+		<link rel="alternate" type="application/rss+xml" title="City in a Bottle Blog" href="/rss/blog/" />
+		<script type="text/javascript" src="/media/js/swfobject.js"></script>
+		
+<script type="text/javascript" src="/media/syntax/shCore.js"></script>
+<script type="text/javascript" src="/media/syntax/shBrushPython.js"></script>
+<link type="text/css" rel="stylesheet" href="/media/syntax/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/media/syntax/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.bloggerMode = true; 
+	SyntaxHighlighter.defaults.gutter = false;
+	SyntaxHighlighter.defaults.toolbar = false;
+	SyntaxHighlighter.all({"brush":"python"});
+</script>
+
+	</head>
+<body id="documentation">
+	<div id="shadow">
+	<div id="wrap">
+		<div id="nav">
+			<a id="nav-homepage" class="first" href="/">Home</a>
+			<a id="nav-about" href="/about/">About</a>
+			<a id="nav-gallery" href="/gallery/">Gallery</a>
+			<a id="nav-download" href="/downloads/">Download</a>
+			<a id="nav-contact" href="/contact/">Contact</a>
+		</div>
+		<div id="masthead">
+			
+			<a href="/"><img src="/media/img/masthead-small3.jpg"></a>
+			
+		</div>
+		<div id="columnwrap">
+			<div id="sectionhead">
+			
+
+			</div>
+			
+		<div id="content">
+		
+<h2>NodeBox for OpenGL &raquo; Sound<br /></h2><h3> </h3><p><a href="/nodebox/">NodeBox</a> module <span class="inline_code">nodebox.sound</span> offers a set of convenience classes and functions to work with audio in an animation. Currently, it contains a single <span class="inline_code">PD</span> class. </p><p>&nbsp;</p><hr size="2" width="100%" /><h2>PureData&nbsp;</h2><p>Pd or PureData (<a href="http://puredata.info/">http://puredata.info/</a>) is a free graphical programming environment for audio processing. Building blocks&nbsp; can be connected to manipulate audio input, or generate audio output. A network of building blocks is called a &quot;patch&quot;, for example: </p><p><img src="/media/img/nodebox-sound-pd.png" class="image_border" /></p><p>The <span class="inline_code">/examples/11-sound/02-in-out.py</span> script shows you how to communicate with the above patch: </p><span class="example"><pre>from nodebox.graphics import *<br />from nodebox.sound import PD, LOCALHOST<br /><br /># start=False means that you must open Pd manually and load the patch.<br /># This is necessary because we'll use the Pd GUI to control the animation.<br />pd = PD(&quot;02-in-out.pd&quot;, start=False)<br />&nbsp;&nbsp;&nbsp; <br />def draw(canvas):<br />&nbsp;&nbsp;&nbsp; canvas.clear()<br />&nbsp;&nbsp;&nbsp; data = pd.get(&quot;/output&quot;, host=LOCALHOST, port=44000)<br />&nbsp;&nbsp;&nbsp; if data:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; size, color, angle = data<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; translate(250, 250)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rotate(angle)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fill(0, color/255.0, 0)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rect(-size/2, -size/2, size, size)<br />&nbsp;&nbsp;&nbsp; pd.send((canvas.mouse.x, canvas.mouse.y), &quot;/input&quot;, host=LOCALHOST, port=44001)<br /><br />def stop(canvas):<br />&nbsp;&nbsp;&nbsp; pd.stop()<br /><br />canvas.size = 500, 500<br />canvas.run(draw, stop=stop) <br /></pre></span><p>&nbsp;</p><p>The <span class="inline_code">PD</span> object can be used in NodeBox to create a network connection with PureData. When a <span class="inline_code">patch</span> (i.e. a .pd file) is given and <span class="inline_code">start=True</span>, loads the Pd application with the patch silently in the background. Otherwise, communication can be established with whatever patch is open in a running Pd. The <span class="inline_code">buffer</span> parameter specifies the size in bytes of the audio buffer swapped between NodeBox and Pd. The <span class="inline_code">path</span> parameter defines the location of the PD executable. By default, a number of common locations are searched:</p><ul><li>the current folder,</li><li><span class="inline_code">/usr/local/bin/pd</span> (Unix),</li><li><span class="inline_code">/Applications/Pd-extended.app/Contents/Resources/bin/pd</span> (OS X),</li><li><span class="inline_code">C:\Program Files\pd\bin\pd.exe</span> (Windows).</li></ul><pre>pd = PD(patch=None, buffer=128, options={}, start=False, path=DEFAULT)</pre><pre>pd.output                                  # A string of info from Pd, or None.</pre><pre>pd.start()                                 # Starts Pd application in background.<br />pd.stop()                                  # Returns True on success.<br />pd.send(data, path, host=LOCALHOST, port=44000)<br />pd.get(path, host=LOCALHOST, port=44001) <br /></pre><ul><li><span class="inline_code">PD.get()</span> returns a list of data sent from the given path in Pd.<br /><span class="inline_code"></span></li><li><span class="inline_code">PD.send()</span> sends the given list of data over <a href="https://en.wikipedia.org/wiki/Open_Sound_Control">OSC</a> to Pd.<br />The <span class="inline_code">path</span> specifies the address where Pd receives the data e.g. <span class="inline_code">&quot;/creature/perch&quot;</span>.&nbsp;</li></ul><h3>Network host and ports</h3><p>The default host is <span class="inline_code">LOCALHOST</span> (<span class="inline_code">127.0.0.1</span>) but another IP-address can be given. By default, NodeBox will receive data on network port <span class="inline_code">44000</span> and send data to Pd on port <span class="inline_code">44001</span>. This is a convention. In the PureData patch, we'd like you to use port <span class="inline_code">44000</span> for sending data and <span class="inline_code">44001</span> for receiving data &ndash; following the convention makes it easier for other users to see what is happening. </p><table border="0"><tbody><tr><td class="smallcaps">Global</td><td><span class="smallcaps">Port</span><br /></td><td><span class="smallcaps">NodeBox</span><br /></td><td><span class="smallcaps">PureData</span><br /></td></tr><tr><td><span class="inline_code">IN </span><br /></td><td>44000 <br /></td><td>receive data from Pd <br /></td><td>send data with <span class="inline_code">sendOSC </span><br /></td></tr><tr><td><span class="inline_code">OUT </span><br /></td><td>44001 <br /></td><td>send data to Pd <br /></td><td>receive data with <span class="inline_code">dumpOSC </span><br /></td></tr></tbody></table><h3>Command-line options</h3><p>Command line options can be passed to the <span class="inline_code">options</span> dictionary in the <span class="inline_code">PD</span> constructor. By default, the dictionary contains <span class="inline_code">{&quot;-nogui&quot;: None}</span> to start Pd in the background. Other options can be found <a href="http://puredata.info/docs/manuals/pd/x3.htm#s4">here</a> in the Pd documentation. </p><h3>Stopping Pd</h3><p>If Pd is started silently in the background, it is essential that it is also stopped when the animation exits! To achieve this, simply call <span class="inline_code">PD.stop()</span> in a <span class="inline_code">Canvas.</span><span class="inline_code"><span class="inline_code">s</span>top()</span> event - see the example script above. </p><p>&nbsp;</p><p>&nbsp;</p>
+
+		</div>
+		<div id="sidebar">
+		
+			<div id="search">
+				<form method="get" action="/search/">
+					<input type="text" name="q" value="">
+					<input type="submit" value="Search" >
+				</form>
+			</div>
+		
+		</div>
+
+			<br clear="both">
+		</div>
+		<div id="footer">
+			Copyright &copy; 2007 City in a Bottle. All rights reserved. With support from the Flemish Audiovisual Fund.
+		</div>
+	</div>
+	</div>
+	<img src="/media/img/shadow-bottom.png">
+
+<script type="text/javascript">
+	//var so = new SWFObject("/media/swf/banner-small.swf","movie", "900","100", "6" ,"#000000")
+	//so.write("masthead")
+</script>
+
+<script src="https://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+	_uacct = "UA-2297873-2";
+	urchinTracker();
+</script>
+</body>
+</html>

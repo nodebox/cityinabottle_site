@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="en-us" />
+		<title>GUI | NodeBox for OpenGL | City in a Bottle</title>
+		<meta http-equiv="imagetoolbar" content="no" />
+		<meta name="MSSmartTagsPreventParsing" content="true" />
+		<meta name="Copyright" content="This site's design and contents Copyright (c) 2007 City In A Bottle." />
+		<meta name="keywords" content="City in a Bottle, Creatures, Game, Python, NodeBox, evolution, open-source, blog" />
+		<link href="/media/css/screen.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="/media/css/print.css" rel="stylesheet" type="text/css" media="print" />
+		<link rel="alternate" type="application/rss+xml" title="City in a Bottle Blog" href="/rss/blog/" />
+		<script type="text/javascript" src="/media/js/swfobject.js"></script>
+		
+<script type="text/javascript" src="/media/syntax/shCore.js"></script>
+<script type="text/javascript" src="/media/syntax/shBrushPython.js"></script>
+<link type="text/css" rel="stylesheet" href="/media/syntax/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/media/syntax/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.bloggerMode = true; 
+	SyntaxHighlighter.defaults.gutter = false;
+	SyntaxHighlighter.defaults.toolbar = false;
+	SyntaxHighlighter.all({"brush":"python"});
+</script>
+
+	</head>
+<body id="documentation">
+	<div id="shadow">
+	<div id="wrap">
+		<div id="nav">
+			<a id="nav-homepage" class="first" href="/">Home</a>
+			<a id="nav-about" href="/about/">About</a>
+			<a id="nav-gallery" href="/gallery/">Gallery</a>
+			<a id="nav-download" href="/downloads/">Download</a>
+			<a id="nav-contact" href="/contact/">Contact</a>
+		</div>
+		<div id="masthead">
+			
+			<a href="/"><img src="/media/img/masthead-small3.jpg"></a>
+			
+		</div>
+		<div id="columnwrap">
+			<div id="sectionhead">
+			
+
+			</div>
+			
+		<div id="content">
+		
+<h2>NodeBox for OpenGL &raquo; GUI</h2>
+<p><a href="/nodebox/">NodeBox</a> module <span class="inline_code"></span><span class="inline_code">nodebox.gui</span> offers simple user interface widgets, such as an input field or a button. <br />For example:</p>
+<div class="example">
+<pre>from nodebox.graphics import *<br />from nodebox.gui import *<br /><br />panel = Panel("Example", width=200, height=200)<br />panel.append(<br />&nbsp;&nbsp;&nbsp; Rows(controls=[<br />&nbsp;&nbsp; &nbsp;              Field(value="hello world", hint="text"),<br />&nbsp; &nbsp; &nbsp; (&nbsp;&nbsp; "size", Slider(default=1.0, min=0.0, max=2.0, steps=100)),<br />&nbsp;&nbsp; &nbsp; &nbsp;("opacity", Slider(default=1.0, min=0.0, max=1.0, steps=100)),<br />&nbsp; &nbsp; &nbsp; (&nbsp; "show?", Checkbox(default=True)),<br />&nbsp; &nbsp; &nbsp; Button("Reset", action=lambda button: None)]))<br />panel.pack()<br />canvas.append(panel)<br />canvas.run()</pre>
+</div>
+<table class="invisible">
+<tbody>
+<tr>
+<td><img src="/media/img/nodebox-gui-panel.jpg" alt="nodebox-gui-panel" /></td>
+<td>
+<p>On the left is a <span class="inline_code">Panel</span> displaying several controls arranged in a <span class="inline_code">Rows</span> layout:</p>
+<ul>
+<li><span class="inline_code">Field</span>: contains an editable string.</li>
+<li><span class="inline_code">Slider</span>: interpolates between a min and max value.<span class="inline_code"></span></li>
+<li><span class="inline_code">Checkbox</span>: toggles between <span class="inline_code">True</span> and <span class="inline_code">False</span>.</li>
+<li><span class="inline_code">Button</span>: calls a user-defined function when pressed. &nbsp;</li>
+</ul>
+<p>A custom visual style can be defined by setting <span class="inline_code">nodebox.gui.theme</span> to a <span class="inline_code">Theme</span> object. The default visual style is loosely based on the iPhone GUI. Due to time constraints we have yet to design a nice style of our own. Contributions in this area are welcome.</p>
+<p>&nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<hr size="2" width="100%" />
+<h2>Theme</h2>
+<p>A <span class="inline_code">Theme</span> defines the source artwork for controls, and font settings for labels. A theme is loaded from a given folder path containing PNG images and TTF font files. The default theme is in <span class="inline_code">nodebox/graphics/gui/theme/</span>. Copy this folder and modify it to create a custom theme.</p>
+<pre class="brush: python">theme = Theme(path, <br />&nbsp;&nbsp;&nbsp; fontname = "Droid Sans", <br />&nbsp;&nbsp;&nbsp; fontsize = 10, <br />&nbsp; fontweight = NORMAL, <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; text = Color(1)) </pre>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2>Control</h2>
+<p>The <span class="inline_code">Control</span> class is the base class from which all GUI controls inherit. All of its properties are available in each type of control. Since it inherits from <span class="inline_code">Layer</span>, it must be appended to the canvas (or another <span class="inline_code">Control</span> or <span class="inline_code">Layout</span> container) to receive events and get drawn. Each type of control implements a range of layer events (usually <span class="inline_code">Layer.on_mouse_release()</span>) to elicit the correct behavior when the user clicks or drags the control.</p>
+<pre class="brush: python">ctrl = Control(x=0, y=0, id=None, color=(1,1,1,1))</pre>
+<pre class="brush: python">ctrl.id                                    # Unique name, e.g. "slider_speed".<br />ctrl.x                                     # Horizontal offset.<br />ctrl.y                                     # Vertical offset.<br />ctrl.width                                 # Control width (read-only).<br />ctrl.height                                # Control height (read-only).<br />ctrl.control                               # Control image color.<br />ctrl.enabled                               # True =&gt; receive events. </pre>
+<pre class="brush: python">ctrl.reset()                               # Reverta to default settings.</pre>
+<pre class="brush: python">ctrl.on_mouse_doubleclick(mouse)           # Double-click event.<br />cltr.on_action() </pre>
+<h3>Label</h3>
+<p>A <span class="inline_code">Label</span> displays a text caption centered in the label's (width, height)-box. It does not receive any events. Optional parameters can include <span class="inline_code">fill</span>, <span class="inline_code">font</span>, <span class="inline_code">fontsize</span>, <span class="inline_code">fontweight</span>.&nbsp;</p>
+<pre class="brush: python">label = Label(caption, x=0, y=0, width=None, height=None, id=None)</pre>
+<pre class="brush: python">label.caption                              # Caption text.</pre>
+<h3>Button</h3>
+<p>A <span class="inline_code">Button</span> displays a clickable button that will fire <span class="inline_code">Button.on_action()</span> when clicked. The action handler can be defined in a subclass, or given as a function. This function takes a <span class="inline_code">Button</span> as its only parameter.</p>
+<pre class="brush: python">button = Button(caption="", action=None, x=0, y=0, width=125, id=None)</pre>
+<pre class="brush: python">button.caption                             # Caption text.</pre>
+<h3>Slider</h3>
+<p>A <span class="inline_code">Slider</span> displays draws a draggable slider that will fire <span class="inline_code">Slider.on_action()</span> when dragged. The slider's value can be retrieved with <span class="inline_code">Slider.value</span>.</p>
+<pre class="brush: python">slider = Slider(default=0.5, min=0.0, max=1.0, steps=100, x=0, y=0, width=125, id=None)</pre>
+<pre class="brush: python">slider.min                                 # Slider minimum value.<br />slider.max                                 # Slider maximum value.<br />slider.default                             # Slider default value.<br />slider.value                               # Slider current value.<br />slider.relative                            # Slider value between 0.0-1.0.<br />slider.steps                               # Number of steps from min to max. </pre>
+<h3>Knob</h3>
+<p>A <span class="inline_code">Knob</span> displays a twistable knob that fires <span class="inline_code">Knob.on_action()</span> when turned. The knob's value can be retrieved with <span class="inline_code">Knob.value</span>. With <span class="inline_code">limit=True</span> the value is constrained between 0-360 (i.e. knob angle).</p>
+<pre class="brush: python">knob = Knob(default=0, limit=True, x=0, y=0, id=None)</pre>
+<pre class="brush: python">knob.default&nbsp;&nbsp;&nbsp;&nbsp;                           # Knob default value.<br />knob.value&nbsp;&nbsp;&nbsp;&nbsp;                             # Knob current value (0-360).<br />knob.relative &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Knob value between 0.0-1.0.</pre>
+<h3>Checkbox</h3>
+<p>A Checkbox&nbsp;(or <span class="inline_code">Flag</span>) displays a checkbox that fires <span class="inline_code">Checkbox.on_action()</span> when toggled. Its value can be retrieved with <span class="inline_code">Checkbox.value</span>.</p>
+<pre class="brush: python">checkbox = Checkbox(default=False, x=0, y=0, id=None)</pre>
+<pre class="brush: python">checkbox.default&nbsp;&nbsp;&nbsp;&nbsp;                       # Checkbox default value.<br />checkbox.value&nbsp;&nbsp;&nbsp;&nbsp;                         # Checkbox current value (True | False)</pre>
+<h3>Field</h3>
+<p>A <span class="inline_code">Field</span> displays a single-line text input field that will fire <span class="inline_code">Field.on_action()</span> when <span class="inline_code">ENTER</span> is pressed. Text in the field can be modified and selected. The string value can be retrieved with <span class="inline_code">Field.value</span>. Optional parameters can include <span class="inline_code">fill</span>, <span class="inline_code">font</span>, <span class="inline_code">fontsize</span>, <span class="inline_code">fontweight</span>.&nbsp;</p>
+<pre class="brush: python">field = Field(value="", hint="", action=None, x=0, y=0, width=125, padding=5, id=None) </pre>
+<pre class="brush: python">field.default                              # Default string value.<br />field.value                                # Current string value.<br />field.hint                                 # Display text when empty.<br />field.selection                            # A tuple of (i,j)-values.<br />field.selected                             # True =&gt; text is selected.<br />field.cursor                               # Index of caret position.</pre>
+<p>A multi-line field can be created with optional parameters <span class="inline_code">wrap=True</span> and <span class="inline_code">height</span> (field height in pixels). By default, <span class="inline_code">ENTER</span> and <span class="inline_code">TAB</span> keys are reserved. To add new lines and tabs in the field, use optional parameter <span class="inline_code">reserved=[]</span> (list of reserved keys).</p>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2>Panel</h2>
+<p>A <span class="inline_code">Panel</span> acts as a container for other controls. It can be dragged when <span class="inline_code">Panel.fixed=False</span>. A control or <span class="inline_code">Layout</span> group can be added with <span class="inline_code">Panel.append()</span>. If the control is added directly (instead of in a <span class="inline_code">Layout</span>), its (x,y)-position needs to be set manually to create an orderly layout.</p>
+<pre class="brush: python">panel = Panel(caption="", fixed=False, modal=True, x=0, y=0, width=175, height=250)</pre>
+<pre class="brush: python">panel.caption                              # Caption text.<br />panel.fixed                                # True =&gt; can be dragged.<br />panel.modal                                # True =&gt; has close button.</pre>
+<pre class="brush: python">panel.controls                             # A list of Control objects.<br />panel.[control_id]                         # Yields control with given id.<br />panel.append(control)</pre>
+<pre class="brush: python">panel.open()                               # Shows the panel.<br />panel.close()                              # Hides the panel.</pre>
+<pre class="brush: python">panel.pack(padding=20)                     # Make panel as small as possible.</pre>
+<h3>Dock</h3>
+<p>A <span class="inline_code">Dock</span> panel is attached to the edge of the canvas (<span class="inline_code">LEFT</span> or <span class="inline_code">RIGHT</span>), extending the full height. With <span class="inline_code">fixed=False</span>, it can be snapped from the edge and dragged as a normal panel.</p>
+<pre class="brush: python">dock = Dock(caption="", anchor=LEFT, fixed=True, modal=True, x=0, y=0, width=175, height=250)</pre>
+<pre class="brush: python">dock.anchor                                # LEFT or RIGHT.<br />dock.snap                                  # Dock snap radius (by default, 1).</pre>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2>Layout</h2>
+<p>The <span class="inline_code">Layout</span> class is the base class for ordered groups of controls. A <span class="inline_code">Control</span> (or another <span class="inline_code">Layout</span>) can be added with <span class="inline_code">Layout.append()</span>. The layout will be applied when <span class="inline_code">Layout.apply()</span> is called. This happens automatically when the layout is appended to a <span class="inline_code">Panel</span> or another <span class="inline_code">Layout</span>. Note: in this case you can pass an optional <span class="inline_code">spacing</span> parameter to <span class="inline_code">Panel.append()</span> or <span class="inline_code">Layout.append()</span>.</p>
+<pre class="brush: python">layout = Layout(controls=[], x=0, y=0)</pre>
+<pre class="brush: python">layout.append(control) </pre>
+<pre class="brush: python">layout.apply(spacing=10)</pre>
+<h3>Rows</h3>
+<p>A <span class="inline_code">Rows</span> layout is a layout where each control appears on a new line. Each control has an associated text caption, displayed to the left of the control. The given <span class="inline_code">width</span> defines the desired width for all controls (the width of individual controls is ignored).</p>
+<pre class="brush: python">rows = Rows(controls=[], x=0, y=0, width=125)</pre>
+<pre class="brush: python">rows.controls                              # A list of Control objects.<br />rows.captions                              # A list of Label objects.</pre>
+<pre class="brush: python">rows.append(control, caption="")</pre>
+<pre class="brush: python">rows.apply(spacing=10)</pre>
+<h3>Row</h3>
+<p>A <span class="inline_code">Row</span> layout is a layout where each control appears in a new column. Each control has an associated text caption, displayed centrally on top of the control. The given <span class="inline_code">width</span> defines the desired width for all controls. The given <span class="inline_code">align</span> (<span class="inline_code">CENTER</span> | <span class="inline_code">TOP</span>) defines how controls are aligned vertically in the row.</p>
+<pre>row = Row(controls=[], x=0, y=0, width=125, align=CENTER)<br />row.controls&nbsp;                              # A list of Control objects.<br />row.captions&nbsp;                              # A list of Label objects.</pre>
+<pre>row.append(control, caption="")</pre>
+<pre>row.apply(spacing=10)</pre>
+
+		</div>
+		<div id="sidebar">
+		
+			<div id="search">
+				<form method="get" action="/search/">
+					<input type="text" name="q" value="">
+					<input type="submit" value="Search" >
+				</form>
+			</div>
+		
+		</div>
+
+			<br clear="both">
+		</div>
+		<div id="footer">
+			Copyright &copy; 2007 City in a Bottle. All rights reserved. With support from the Flemish Audiovisual Fund.
+		</div>
+	</div>
+	</div>
+	<img src="/media/img/shadow-bottom.png">
+
+<script type="text/javascript">
+	//var so = new SWFObject("/media/swf/banner-small.swf","movie", "900","100", "6" ,"#000000")
+	//so.write("masthead")
+</script>
+
+<script src="https://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+	_uacct = "UA-2297873-2";
+	urchinTracker();
+</script>
+</body>
+</html>

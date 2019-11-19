@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="en-us" />
+		<title>Game engine source code | City in a Bottle</title>
+		<meta http-equiv="imagetoolbar" content="no" />
+		<meta name="MSSmartTagsPreventParsing" content="true" />
+		<meta name="Copyright" content="This site's design and contents Copyright (c) 2007 City In A Bottle." />
+		<meta name="keywords" content="City in a Bottle, Creatures, Game, Python, NodeBox, evolution, open-source, blog" />
+		<link href="/media/css/screen.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="/media/css/print.css" rel="stylesheet" type="text/css" media="print" />
+		<link rel="alternate" type="application/rss+xml" title="City in a Bottle Blog" href="/rss/blog/" />
+		<script type="text/javascript" src="/media/js/swfobject.js"></script>
+		
+	</head>
+<body id="blog">
+	<div id="shadow">
+	<div id="wrap">
+		<div id="nav">
+			<a id="nav-homepage" class="first" href="/">Home</a>
+			<a id="nav-about" href="/about/">About</a>
+			<a id="nav-gallery" href="/gallery/">Gallery</a>
+			<a id="nav-download" href="/downloads/">Download</a>
+			<a id="nav-contact" href="/contact/">Contact</a>
+		</div>
+		<div id="masthead">
+			
+			<a href="/"><img src="/media/img/masthead-small3.jpg"></a>
+			
+		</div>
+		<div id="columnwrap">
+			<div id="sectionhead">
+			
+			</div>
+			
+				<div id="content">
+				
+<h1>Game engine source code</h1>
+<p><span class="pink">Technical note. </span></p><h3>The game engine for City In A Bottle is now open source (GPL). <br />The code is hosted at the <a href="http://dev.nodebox.net/browser/nodebox-gl/trunk">NodeBox development site</a>. </h3><p>For people that are already familiar with NodeBox, the engine has adopted the same API (i.e. drawing commands) as NodeBox so it's very easy to get started.</p><p>The game engine is written entirely in Python and built on top of Pyglet. Graphics are rendered in OpenGL. So far we have code for drawing images and primitives (B&eacute;zier paths, including all the path mathematics from NodeBox), extension classes for working with layers and motion tweening, matrix transformations and basic hit testing, a few GLSL shaders (colorize, blur, gradient, multiply) and offscreen rendering. Integration with PD for sound is coming up, as are some GUI controls (slider etc.) </p><p>There's still a lot to do but the code is already operational for rendering NodeBox-like visuals... at hardware-accelerated speed. There's no documentation yet so you'll have to dig into the source.</p><p>Tom </p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'cityinabottle'; 
+    var disqus_identifier = 'blog_entry_12';
+    var disqus_url = 'http://www.cityinabottle.org/blog/game-engine-source-code/';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+				</div>
+			
+			<br clear="both">
+		</div>
+		<div id="footer">
+			Copyright &copy; 2007 City in a Bottle. All rights reserved. With support from the Flemish Audiovisual Fund.
+		</div>
+	</div>
+	</div>
+	<img src="/media/img/shadow-bottom.png">
+
+<script type="text/javascript">
+	//var so = new SWFObject("/media/swf/banner-small.swf","movie", "900","100", "6" ,"#000000")
+	//so.write("masthead")
+</script>
+
+<script src="https://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+	_uacct = "UA-2297873-2";
+	urchinTracker();
+</script>
+</body>
+</html>

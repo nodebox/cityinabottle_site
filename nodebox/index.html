@@ -1,0 +1,759 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="en-us" />
+		<title>NodeBox for OpenGL | City in a Bottle</title>
+		<meta http-equiv="imagetoolbar" content="no" />
+		<meta name="MSSmartTagsPreventParsing" content="true" />
+		<meta name="Copyright" content="This site's design and contents Copyright (c) 2007 City In A Bottle." />
+		<meta name="keywords" content="City in a Bottle, Creatures, Game, Python, NodeBox, evolution, open-source, blog" />
+		<link href="/media/css/screen.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="/media/css/print.css" rel="stylesheet" type="text/css" media="print" />
+		<link rel="alternate" type="application/rss+xml" title="City in a Bottle Blog" href="/rss/blog/" />
+		<script type="text/javascript" src="/media/js/swfobject.js"></script>
+		
+<script type="text/javascript" src="/media/syntax/shCore.js"></script>
+<script type="text/javascript" src="/media/syntax/shBrushPython.js"></script>
+<link type="text/css" rel="stylesheet" href="/media/syntax/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/media/syntax/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.bloggerMode = true; 
+	SyntaxHighlighter.defaults.gutter = false;
+	SyntaxHighlighter.defaults.toolbar = false;
+	SyntaxHighlighter.all({"brush":"python"});
+</script>
+
+	</head>
+<body id="documentation">
+	<div id="shadow">
+	<div id="wrap">
+		<div id="nav">
+			<a id="nav-homepage" class="first" href="/">Home</a>
+			<a id="nav-about" href="/about/">About</a>
+			<a id="nav-gallery" href="/gallery/">Gallery</a>
+			<a id="nav-download" href="/downloads/">Download</a>
+			<a id="nav-contact" href="/contact/">Contact</a>
+		</div>
+		<div id="masthead">
+			
+			<a href="/"><img src="/media/img/masthead-small3.jpg"></a>
+			
+		</div>
+		<div id="columnwrap">
+			<div id="sectionhead">
+			
+
+			</div>
+			
+		<div id="content">
+		
+<h2>NodeBox for OpenGL</h2>
+<p class="big_text">NodeBox for OpenGL is a free, cross-platform library for generating 2D animations with Python programming code. It is built on Pyglet and adopts the drawing API from NodeBox for Mac OS X (http://nodebox.net). It has built-in support for paths, layers, motion tweening, hardware-accelerated image effects, simple physics and interactivity.<span class="Apple-style-span" style="line-height: 17px; font-size: 11px;">&nbsp;</span></p>
+<p>&nbsp;</p>
+<table class="invisible">
+<tbody>
+<tr>
+<td width="65px"><img src="/media/img/NOGL-64.png" style="padding-top: 3px;" /></td>
+<td width="65px"><a href="https://github.com/downloads/nodebox/nodebox-opengl/nodebox-gl-1.7.zip" onclick="javascript:urchinTracker('/downloads/nodebox');"><img src="/media/img/nodebox-download.gif" alt="download" /></a></td>
+<td><b>NodeBox for OpenGL 1.7</b> | <a href="https://github.com/downloads/nodebox/nodebox-opengl/nodebox-gl-1.7.zip" onclick="javascript:urchinTracker('/downloads/nodebox');">download</a>&nbsp;(5MB)
+<ul>
+<li class="small_text">Licensed under <a href="http://www.linfo.org/bsdlicense.html" target="_self">BSD&nbsp;</a></li>
+<li class="small_text">Releases: <a href="https://github.com/downloads/nodebox/nodebox-opengl/nodebox-gl-1.7.zip">1.7</a> | <a href="/media/download/nodebox-gl-1.6.zip">1.6</a> | <a href="/media/download/nodebox-gl-1.5.zip">1.5</a> | <a href="/media/download/nodebox-gl-1.4.zip">1.4</a> | <a href="/media/download/nodebox-gl-1.3.zip">1.3</a> | <a href="/media/download/nodebox-gl-1.2.zip">1.2</a> | <a href="/media/download/nodebox-gl-1.1.zip">1.1</a></li>
+<li class="small_text">Authors: Tom De Smedt (<a href="/cdn-cgi/l/email-protection#7e0a11133e110c191f10170d130d501c1b">mail</a>), Frederik De Bleser</li>
+<li class="small_text">Bundled with 50+ examples</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<table></table>
+&nbsp;
+<table class="invisible" border="0">
+<tbody>
+<tr>
+<td style="width: 25%;">
+<h3>Documentation</h3>
+<ul>
+<li><a href="#introduction" target="_self">Introduction</a></li>
+<li><a href="#installation" target="_self">Installation</a></li>
+<li><a href="#coordinates" target="_self">Coordinate system</a></li>
+<li><a href="#color" target="_self">Color</a></li>
+<li><a href="#transformation" target="_self">Transformation</a></li>
+<li><a href="#primitives" target="_self">Primitives</a></li>
+<li><a href="#path" target="_self">Path </a></li>
+<li><a href="#image" target="_self">Image</a></li>
+<li><a href="#text" target="_self">Text</a></li>
+<li><a href="#utility" target="_self">Utility commands</a></li>
+<li><a href="#layer" target="_self">Layer</a></li>
+<li><a href="#interaction" target="_self">Mouse &amp; keyboard</a></li>
+<li><a href="#canvas" target="_self">Canvas</a></li>
+</ul>
+</td>
+<td style="width: 25%;">
+<h3>Core extensions</h3>
+<ul>
+<li><a href="/nodebox/geometry/">Geometry</a></li>
+<li><a href="/nodebox/shader/">Shader</a></li>
+<li><a href="/nodebox/physics/">Physics</a></li>
+<li><a href="/nodebox/gui/">GUI</a></li>
+<li><a href="/nodebox/sound/">Sound</a></li>
+</ul>
+<span class="small_text">Built-in tools for matrix transformations, GLSL shaders, particle systems, graphs, GUI controls, PureData. </span></td>
+<td style="width: 30%;">
+<h3>Contributing</h3>
+<ul>
+<li><a href="https://github.com/nodebox/nodebox-opengl" target="_blank">GitHub source code</a></li>
+<li><a href="https://groups.google.com/group/nodebox-for-opengl/" target="_blank">Google discussion group</a></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<div align="left">
+<p>&nbsp;</p>
+</div>
+<hr size="2" width="100%" />
+<h2><a name="introduction" title="introduction"></a>Introduction</h2>
+<p>NodeBox for OpenGL is a free, cross-platform library for generating 2D animations with Python programming code. It is built on Pyglet and adopts the drawing API from NodeBox for Mac OS X (<a href="http://nodebox.net" target="_self">http://nodebox.net</a>). It has built-in support for paths, layers, motion tweening, hardware-accelerated image effects, simple physics and interactivity.</p>
+<p><img src="/media/img/nodebox-canvas.jpg" style="margin-top: 0pt; margin-right: 0pt; margin-bottom: -20px; margin-left: -20px;" alt="nodebox-canvas" /></p>
+<p style="text-align: center;" class="small_text">Screenshot: <i>examples/07-filter/03-mirror.py</i></p>
+<h3>Quick overview</h3>
+<p>You'll need a 32-bit <a href="https://www.python.org/download/" target="_self">Python</a> (version 2.5 or 2.6) and <a href="http://www.pyglet.org/download.html" target="_self">Pyglet</a> to run it. NodeBox for OpenGL does not have a built-in code editor. You can use the IDLE editor bundled with Python. On Mac OS X, we prefer TextMate.</p>
+<p>The documentation is concise. Users are assumed to have knowledge of Python (functions &amp; classes) and NodeBox (the original docs are more verbose). The documentation works in conjunction with the <span class="inline_code">examples</span> folder: subjects are touched here and demonstrated in more detail across various examples.</p>
+<p>From the command line, you can run a script with: <span class="inline_code">python example.py</span> (or <span class="inline_code">command-R</span> in TextMate). <br />This will open an application window with the output of your script. <br />To get started, try out some examples, or open and edit <span class="inline_code">examples/test.py</span>.</p>
+<p>Below is a typical NodeBox script. It imports the <span class="inline_code">nodebox.graphics</span> module with the standard set of drawing commands. It defines a <span class="inline_code">draw()</span> function and attaches it to the canvas, so that it will be drawn each animation frame. It opens the main application window with <span class="inline_code">canvas.run()</span>.</p>
+<div class="example">
+<pre>from nodebox.graphics import *<br />from nodebox.graphics.physics import Flock<br /><br />flock = Flock(40, 0, 0, 500, 500)<br />flock.sight = 300<br /><br />def draw(canvas):<br />&nbsp;&nbsp;&nbsp; background(1)<br />&nbsp;&nbsp;&nbsp; fill(0, 0.75)<br />&nbsp;&nbsp;&nbsp; flock.update(cohesion=0.15)<br />&nbsp;&nbsp;&nbsp; for boid in flock:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; translate(boid.x, boid.y)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scale(0.5 + 1.5 * boid.depth)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rotate(boid.heading)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; arrow(0, 0, 15)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop()<br />&nbsp;&nbsp;&nbsp; <br />canvas.fps = 30<br />canvas.size = 600, 400<br />canvas.run(draw) </pre>
+</div>
+<h3>Purpose</h3>
+<p>The original goal is to implement a small game engine for City In A Bottle. NodeBox for OpenGL can be used for simple games, interactive media installations, data visualization and image compositing. It's not as fast as anything in native C, but quite a bit faster than the classic NodeBox.</p>
+<h3>Acknowledgements</h3>
+<p>This version of NodeBox for OpenGL has been developed by the City In A Bottle team, with funding support from the Flemish Audiovisual Fund (VAF). We also credit Lucas Nijs and the Experimental Media Group at Sint Lucas Antwerpen, and Walter Daelemans and the Computational Linguistics Research Group at CLiPS, University of Antwerp for valuable input and support.&nbsp;The documentation was established as part of an artistic research project for the Interuniversity Microelectronics Centre (IMEC), Leuven.</p>
+<ul>
+<li>Author: Tom De Smedt</li>
+<li><span class="Apple-style-span" style="line-height: 17px;">Contributing authors: Frederik De Bleser, Giorgio Olivero, Lieven Menschaert</span></li>
+<li><span class="Apple-style-span" style="line-height: 17px;">Contributors:&nbsp;</span><span class="Apple-style-span" style="line-height: 17px;">Karsten Wolf, Tuk Bredsdorff.</span></li>
+<li><span class="Apple-style-span" style="line-height: 17px;">City In A Bottle: Nicolas Marinus, Ludivine Lechat,&nbsp;Tim Vets,&nbsp;Frederik De Bleser, Tom De Smedt.</span></li>
+</ul>
+<h3>Reference</h3>
+<p>De Smedt T., Lechat L., Daelemans W. (2011). Generative art inspired by nature, in NodeBox. In: Applications of Evolutionary Computation, Part II, LCNS 6625, pp. 264-272, Springer.&nbsp;</p>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2><a name="installation" title="installation"></a>Installation</h2>
+<p>NodeBox for OpenGL is built on the excellent Pyglet module. It works on all platforms if you have Python and Pyglet installed. Installers can be obtained from:</p>
+<ul>
+<li>Python 2.5 or 2.6: <a href="https://www.python.org/download/" target="_self">http://www.python.org/download/</a></li>
+<li>Pyglet 1.4+: <a href="http://www.pyglet.org/download.html" target="_self">http://www.pyglet.org/ </a></li>
+</ul>
+<p>On Mac OS X, Python is already installed. This is fine for Mac OS X 10.5, on 10.6+ (Snow Leopard) this is a 64-bit Python and you either need to install a 32-bit version (better Pyglet + Pysco support), or switch the current version to 32-bit mode by executing the following command from the terminal (more info <a href="https://developer.apple.com/mac/library/documentation/Darwin/Reference/ManPages/man1/python.1.html">here</a>): <br /><span class="inline_code">defaults write com.apple.versioner.python Prefer-32-Bit -bool yes </span></p>
+<p>GNU/Linux users can use their package management system to install Pyglet.<br />Ubuntu: <span class="inline_code">sudo apt-get install python-pyglet</span><br />Fedora: <span class="inline_code">sudo yum install pyglet</span></p>
+<p>Your video hardware needs to support OpenGL 2.0.</p>
+<p>NodeBox may not (fully) work on older hardware. Telltale signs are:</p>
+<ul>
+<li>Using image filters only works with non-transparent images.</li>
+<li>Using image filters produces no visible effect, and <span class="inline_code">nodebox.graphics.shader.SUPPORTED</span> is <span class="inline_code">False</span>.</li>
+<li>Using the <span class="inline_code">render()</span> or <span class="inline_code">filter()</span> command throws an <span class="inline_code">OffscreenBufferError</span>.</li>
+</ul>
+<h3>Compiling the C extensions</h3>
+<p>NodeBox comes bundled with a number of C extensions that increase performance. Binaries have been precompiled for Mac OS X 10.5, but these may not work on your machine. Although it is not required (everything will run fine without the extensions), you can compile binaries manually from the source code.</p>
+<p>In the <span class="inline_code">nodebox/ext/</span> folder, execute <span class="inline_code">setup.py</span> from the command line:</p>
+<div class="install">
+<pre>&gt; cd nodebox/ext/<br />&gt; python setup.py</pre>
+</div>
+<p>In the <span class="inline_code">nodebox/ext/psyco/src/</span> folder, execute <span class="inline_code">setup.py</span> from the command line:</p>
+<div class="install">
+<pre>&gt; cd nodebox/ext/psyco/src<br />&gt; python setup.py</pre>
+</div>
+<h3>Installing the module</h3>
+<p>If you have <span class="inline_code">pip</span>, you can simply do:</p>
+<div class="install">
+<pre>&gt; pip install nodebox-opengl</pre>
+</div>
+<p>Otherwise, you need to place the <span class="inline_code">nodebox</span> folder from the download in the correct location manually. To be able to import NodeBox in your scripts, Python needs to know where the module is located. There are three basic ways to accomplish this:</p>
+<ul>
+<li>Put the <span class="inline_code">nodebox</span> folder in the same folder as your script.</li>
+<li>Put the <span class="inline_code">nodebox</span> folder in the standard location for modules so it is available to <i>all</i> scripts.<br />The standard location depends on your operating system:<br /><span class="inline_code">&nbsp;/Library/Python/2.5/site-packages/</span> on Mac,<br /><span class="inline_code">&nbsp;/usr/lib/python2.5/site-packages/</span> on Unix,<br /><span class="inline_code">&nbsp;c:\python25\Lib\site-packages\ </span>on Windows.</li>
+<li>Add the location of the <span class="inline_code">nodebox</span> folder to the <span class="inline_code">sys.path</span> list in your script, before importing it:</li>
+</ul>
+<div class="example">
+<pre>NODEBOX = '/users/tom/desktop/nodebox'<br />import sys; if NODEBOX not in sys.path: sys.path.insert(0, NODEBOX)<br />from nodebox.graphics import *</pre>
+</div>
+<p>If you get an "import pyglet" error, ensure that Pyglet is installed in<span class="inline_code"> site-packages/</span> too.</p>
+<h3>Screencasts</h3>
+<p><a href="/nodebox/screencasts/">Here</a> are a number of screencasts to help you get through the installation procedures.</p>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2><a name="coordinates" title="coordinates"></a>Coordinate system</h2>
+<p>By, default, the 2D drawing canvas origin (0,0) is located in the lower left. The origin can be moved (or <i>translated</i>) with the <span class="inline_code">translate()</span> command, where positive numbers define the amount of pixels to move right and up.</p>
+<table class="invisible">
+<tbody>
+<tr>
+<td><img src="/media/img/nodebox-transform-origin1.jpg" alt="nodebox-transform-origin1" class="image_border" /></td>
+<td>
+<p><br />When the origin is moved to (100,80), all shapes drawn at (0,0) originate from this point. A shape is drawn, rotated and scaled from its bottom-left corner, except ellipses which are always drawn from their center. A <span class="inline_code">Layer</span> has a variable origin point, e.g. setting a layer's origin to (0.5,0.5) will draw it from its center.</p>
+</td>
+</tr>
+<tr>
+<td><img src="/media/img/nodebox-transform-origin2.jpg" alt="nodebox-transform-origin2" class="image_border" /></td>
+<td>
+<p><br />When the origin is moved to (100,80), and a rectangle with a width of and height of 80 is then drawn at (-40,-40), it will have its center at the origin point, as illustrated in the figure on the left.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2><a name="color" title="color"></a>Color</h2>
+<p>The <span class="inline_code">Color</span> object can be used to store a color in terms of R,G,B,A channel values. It can be passed to <span class="inline_code">background()</span>, <span class="inline_code">fill()</span> and <span class="inline_code">stroke()</span> to set the current drawing color for primitives.</p>
+<p>A color can be initialized with either four values (R,G,B,A), three values (R,G,B), two values (grayscale + alpha) or one value (grayscale, or another <span class="inline_code">Color</span> object). An optional <span class="inline_code">base</span> parameter defines the range of the given values (e.g. 0-255 instead of 0.0-1.0). An optional <span class="inline_code">colorspace</span> defines the color space of the given parameters (e.g. when set to <span class="inline_code">HSB</span>, the given values are expected to be hue, saturation, brightness, alpha instead of red, green, blue, alpha).</p>
+<pre class="brush: python">clr = Color(r, g, b, a, base=1.0, colorspace=RGB)</pre>
+<pre class="brush: python">clr = Color(r, g, b, base=1.0, colorspace=RGB)</pre>
+<pre class="brush: python">clr = Color(grayscale, a, base=1.0, colorspace=RGB)</pre>
+<pre class="brush: python">clr = Color(grayscale, base=1.0, colorspace=RGB)</pre>
+<pre class="brush: python">clr = Color(clr, base=1.0, colorspace=RGB) # Colorspace: RGB, HSB, XYZ, LAB.</pre>
+<pre class="brush: python">clr.rgba                                   # Tuple of (R,G,B,A)-values.<br />clr.rgb                                    # Tuple of (R,G,B)-values.<br />clr.r                                      # Red value between 0.0-1.0.<br />clr.g                                      # Green value between 0.0-1.0.<br />clr.b                                      # Blue value between 0.0-1.0.<br />clr.a                                      # Alpha value between 0.0-1.0. </pre>
+<pre class="brush: python">clr.map(base=1.0, colorspace=RGB)          # Returns a 4-tuple.<br />clr.blend(clr, t=0.5, colorspace=RGB)      # Returns a Color.<br />clr.rotate(angle) &nbsp;                        # Returns a Color.<br />clr.copy()                                 # Returns a copy of the color.</pre>
+<ul>
+<li><span class="inline_code">Color.map()</span> returns a 4-tuple of channel values mapped to the given base and colorspace.<br />For example: <span class="inline_code">clr.map(255, HSB)</span> yields a tuple of (H,S,B,A) values between 0-255.</li>
+<li><span class="inline_code">Color.blend()</span> returns a new color interpolated between two colors. <br />The <span class="inline_code">t</span> parameter defines the amount of each color (e.g. <span class="inline_code">t=0.2</span> means 80% first color, 20% second). <br />Blending in the <span class="inline_code">LAB</span> colorspace avoids "muddy" colors but takes more time to calculate.</li>
+<li>Color.rotate() returns a color with hue rotated on the <a href="https://kuler.adobe.com/#create/fromacolor" target="_self">RYB color wheel</a> by the given angle.</li>
+</ul>
+<h3>Color state commands</h3>
+<p>The <span class="inline_code">background()</span>, <span class="inline_code">fill()</span> and <span class="inline_code">stroke()</span> commands set the current canvas background, shape fill and shape outline color respectively. All subsequently drawn primitives (e.g. lines, ellipses) will use the current fill and outline color. Each command takes the same parameters as a <span class="inline_code">Color</span> object (R,G,B,A | R,G,B | grayscale + alpha | <span class="inline_code">Color</span>). Each command also returns its current setting.</p>
+<p>The <span class="inline_code">strokewidth()</span> command sets the width of the outline. It takes an integer value. Extra fine lines can be simulated by using a stroke width of 1 and a transparent stroke color.</p>
+<pre class="brush: python">background(r, g, b, a)</pre>
+<pre class="brush: python">fill(r, g, b, a)</pre>
+<pre class="brush: python">stroke(r, g, b, a)</pre>
+<pre class="brush: python">nofill()</pre>
+<pre class="brush: python">nostroke()</pre>
+<pre class="brush: python">strokewidth(width=None)</pre>
+<pre class="brush: python">strokestyle(style=None)                    # SOLID, DOTTED, DASHED.</pre>
+<h3>Color filters</h3>
+<p>A color filter returns a new <span class="inline_code">Color</span> that is a variation on the given color, useful for constructing a set of colors that look pleasing together. The <span class="inline_code">darker()</span> and <span class="inline_code">lighter()</span> command modify the color's brightness in HSB, <span class="inline_code">complement()</span> returns the color that is opposite on the RYB color wheel, <span class="inline_code">analog()</span> returns a random adjacent color on the color wheel.</p>
+<pre class="brush: python">darker(clr, step=0.2)                      # Returns a Color.</pre>
+<pre class="brush: python">lighter(clr, step=0.2)                     # Returns a Color.</pre>
+<pre class="brush: python">complement(clr)                            # Returns a Color.</pre>
+<pre class="brush: python">analog(clr, angle=20, d=0.1)               # d = random saturation / brightness.</pre>
+<h3>Color shapes</h3>
+<p>The <span class="inline_code">colorplane()</span> command draws a gradient rectangle that emits a different fill color from each corner. <br />An optional number of 2-4 colors can be given: top + bottom | top left + top right + bottom | top left + top right + bottom right + bottom left.</p>
+<pre class="brush: python">colorplane(x, y, width, height, clr1, clr2, clr3, clr4)</pre>
+<p class="small_text"><span style="text-decoration: underline;"><br />References</span>: <a href="http://www.easyrgb.com/math.php" target="_self">easyrgb.com </a></p>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2><a name="transformation" title="transformation"></a>Transformation</h2>
+<p>The <span class="inline_code">translate()</span> command sets the current origin point for primitives, paths, images, text and layers. By default the origin is (0,0), which is the <b>bottom left</b> corner of the canvas. With <span class="inline_code">translate(100,100)</span>, the current origin becomes (100,100). If <span class="inline_code">translate(-50,0)</span> is then called, the current origin becomes (50,100). In the same way, <span class="inline_code">rotate(30)</span> followed by <span class="inline_code">rotate(60)</span> sets the current rotation for all subsequent shapes to 90.</p>
+<p>The <span class="inline_code">push()</span> and <span class="inline_code">pop()</span> commands create a branch in the current transformation state. The effect of <span class="inline_code">translate()</span>, <span class="inline_code">rotate()</span> and <span class="inline_code">scale()</span> after a <span class="inline_code">push()</span> only lasts until <span class="inline_code">pop()</span> is called. The <span class="inline_code">reset()</span> command resets all transformations (origin is (0,0), rotation is zero, scale is 100%).</p>
+<pre class="brush: python">translate(x, y)                            # Push horizontal and vertical offset.</pre>
+<pre class="brush: python">rotate(degrees)                            # Push angle in degrees.</pre>
+<pre class="brush: python">scale(x, y=None)                           # Push relative scale: 1.0 = 100%</pre>
+<pre class="brush: python">push()</pre>
+<pre class="brush: python">pop()</pre>
+<pre class="brush: python">reset()</pre>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2><a name="primitives" title="primitives"></a>Primitives</h2>
+<p>Geometric primitives are the simplest shapes that can be drawn to the canvas: <i>line</i>, <i>rectangle</i>, <i>triangle</i>, <i>ellipse</i>, and two additional shapes, <i>arrow</i> and <i>star</i>.</p>
+<table>
+<tbody>
+<tr>
+<td align="center"><img src="/media/img/nodebox-primitives-line.jpg" alt="nodebox-primitives-line" /><span class="small_text"></span><span class="smallcaps"><br />line</span></td>
+<td align="center"><img src="/media/img/nodebox-primitives-rect.jpg" alt="nodebox-primitives-rect" /><span class="small_text"></span><span class="smallcaps"><br />rect </span></td>
+<td align="center"><img src="/media/img/nodebox-primitives-triangle.jpg" alt="nodebox-primitives-triangle" /><span class="small_text"></span><br /><span class="smallcaps">triangle </span></td>
+<td align="center"><img src="/media/img/nodebox-primitives-ellipse.jpg" alt="nodebox-primitives-ellipse" /><span class="small_text"></span><br /><span class="smallcaps">ellipse </span></td>
+<td align="center"><img src="/media/img/nodebox-primitives-arrow.jpg" alt="nodebox-primitives-arrow" /><span class="small_text"></span><br /><span class="smallcaps">arrow </span></td>
+<td align="center"><img src="/media/img/nodebox-primitives-star.jpg" alt="nodebox-primitives-star" /><span class="small_text"></span><br /><span class="smallcaps">star </span></td>
+</tr>
+</tbody>
+</table>
+&nbsp;
+<pre class="brush: python">line(x0, y0, x1, y1)</pre>
+<pre class="brush: python">rect(x, y, width, height)</pre>
+<pre class="brush: python">triangle(x1, y1, x2, y2, x3, y3)</pre>
+<pre class="brush: python">ellipse(x, y, width, height)</pre>
+<pre class="brush: python">arrow(x, y, width)</pre>
+<pre class="brush: python">star(x, y, points=20, outer=100, inner=50)</pre>
+<p>The <span class="inline_code">star()</span> command constructs a <span class="inline_code">BezierPath</span> object. By passing an optional parameter <span class="inline_code">draw=False</span> to the command this path is returned instead of drawn.</p>
+<p>Drawn primitives will adhere to the current color and transformation state. The color state can be overridden by passing an optional <span class="inline_code">fill</span>, <span class="inline_code"> stroke</span>, <span class="inline_code">strokewidth</span>, <span class="inline_code">strokestyle</span> to the command, for example:</p>
+<div class="example">
+<pre>from nodebox.graphics import *<br /><br />def draw(canvas):<br />&nbsp;&nbsp;&nbsp; canvas.clear()<br />&nbsp;&nbsp;&nbsp; nofill()<br />&nbsp;&nbsp;&nbsp; stroke(0, 0.25)<br />&nbsp;&nbsp;&nbsp; strokewidth(1)<br />&nbsp;&nbsp;&nbsp; rect( 50, 50, 50, 50)<br />&nbsp;&nbsp;&nbsp; rect(110, 50, 50, 50, stroke=Color(0), strokestyle=DASHED)<br />&nbsp;&nbsp;&nbsp; rect(170, 50, 50, 50)<br />&nbsp;&nbsp;&nbsp; <br />canvas.run(draw) </pre>
+</div>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2><a name="path" title="path"></a>Path</h2>
+<h3>Path element</h3>
+<p>The <span class="inline_code">PathElement</span> object defines a single point in a <span class="inline_code">BezierPath</span>. Its <span class="inline_code">cmd</span> property defines the kind of segment from the previous point to this point: <span class="inline_code">MOVETO</span>, <span class="inline_code">LINETO</span>, <span class="inline_code">CURVETO</span> or <span class="inline_code">CLOSE</span>. For curve segments, the point has <span class="inline_code">ctrl1</span> and <span class="inline_code">ctrl2</span> properties that define the control handles of the curve:</p>
+<ul>
+<li><span class="inline_code">ctrl1</span> describes the direction and magnitude of the curve leaving the previous point,</li>
+<li><span class="inline_code">ctrl2</span> describes the direction and magnitude of the curve arriving in this point.</li>
+</ul>
+<pre class="brush: python">pt = PathElement(cmd=None, pts=None)</pre>
+<pre class="brush: python">pt.cmd                                     # MOVETO, LINETO, CURVETO, CLOSE<br />pt.xy                                      # Tuple of (x,y)-values.<br />pt.x                                       # Horizontal offset.<br />pt.y                                       # Vertical offset.<br />pt.ctrl1.x                                 # For CURVETO: <br />pt.ctrl1.y                                 # curvature from previous point.<br />pt.ctrl2.x                                 # For CURVETO: <br />pt.ctrl2.y                                 # curvature ending in this point.</pre>
+<pre class="brush: python">pt.copy()                                  # Returns a copy of the point.</pre>
+<h3>Path</h3>
+<p>The <span class="inline_code">BezierPath</span> object is a list of <span class="inline_code">PathElement</span> objects. The points in a path can easily be traversed in a <span class="inline_code">for</span>-loop. New points can be added to the path with the <span class="inline_code">moveto()</span>, l<span class="inline_code">ineto()</span>, <span class="inline_code">curveto()</span> methods. Alternatively, <span class="inline_code">findpath()</span> returns a smooth <span class="inline_code">BezierPath</span> object constructed from a given list of (x,y)-tuples.</p>
+<pre class="brush: python">path = BezierPath(path=None)</pre>
+<pre class="brush: python">path = findpath(points=[], curvature=1.0) </pre>
+<pre class="brush: python">path.copy()<br />path.append(pathelement)<br />path.remove(pathelement)</pre>
+<pre class="brush: python">path.moveto(x, y)<br />path.lineto(x, y)<br />path.curveto(x1, y1, x2, y2, x3, y3)<br />path.arcto(x, y, radius=1, clockwise=True, short=False)<br />path.closepath()</pre>
+<pre class="brush: python">path.rect(x, y, width, height, roundness=0.0)<br />path.ellipse(x, y, width, height)<br />path.arc(x, y, width, height, start=0, stop=90)</pre>
+<pre class="brush: python">path.length                                # Approximate length of the path.<br />path.contours                              # List of BezierPath contours.<br />path.bounds                                # Tuple of (x,y,width,height)-values.<br />path.contains(x, y, precision=100)         # Returns True if (x,y) in path. </pre>
+<pre class="brush: python">path.addpoint(t)                           # Inserts PathElement at t (0.0-1.0).<br />path.points(amount=2, start=0.0, end=1.0)  # Iterator of PathElement objects.<br />path.point(t)                              # Returns PathElement at t.<br />path.angle(t)                              # Returns tangent angle at t.</pre>
+<pre class="brush: python">path.flatten(precision=RELATIVE)<br />path.draw(precision=RELATIVE) </pre>
+<ul>
+<li><span class="inline_code">BezierPath.points()</span> and <span class="inline_code">BezierPath.point()</span> return <span class="inline_code">DynamicPathElement</span> objects. <br />These are dynamically calculated using linear interpolation math based on a given time <span class="inline_code">t</span> <br />(where <span class="inline_code">t=0.0</span> is the start of the path and <span class="inline_code">t=1.0</span> is the end of the path).</li>
+<li><span class="inline_code">BezierPath.flatten()</span> returns a list of contours, where each contour is a list of (x,y)-tuples.</li>
+<li><span class="inline_code">BezierPath.draw()</span> draws the path to the canvas with a given <span class="inline_code">precision</span> for curves.<br />The <span class="inline_code">precision</span> determines the number of small, straight lines to represent a curve.<br /> It can be a fixed number (int) or relative to the curve length (float or <span class="inline_code">RELATIVE</span>). <br />Optional parameters include <span class="inline_code">fill</span>, <span class="inline_code">stroke</span>, <span class="inline_code">strokewidth</span> and <span class="inline_code">strokestyle</span>.</li>
+</ul>
+<h3>Path state commands</h3>
+<p>The <span class="inline_code">drawpath()</span> command draws a <span class="inline_code">BezierPath</span> using the current color and transformation state. The color state can be overridden by passing an optional <span class="inline_code">fill</span>, <span class="inline_code"> stroke</span>, <span class="inline_code">strokewidth</span> and/or <span class="inline_code">strokestyle</span> to the command.</p>
+<p>Consistent with NodeBox for Mac OS X, <span class="inline_code">beginpath()</span> starts a new path at (x,y). Points can be added to it with <span class="inline_code">moveto()</span>, <span class="inline_code">lineto()</span>, <span class="inline_code">curveto()</span>, until <span class="inline_code">endpath()</span> is called and the path is drawn/returned. Regardless of whether you use <span class="inline_code">BezierPath</span> directly or work with <span class="inline_code">beginpath()</span>, the efficient way is to create a path outside of the animation loop, and leave it unmodified to take advantage of caching mechanisms (GLU tessellation + OpenGL Display List).</p>
+<pre class="brush: python">autoclosepath(close=False)</pre>
+<pre class="brush: python">beginpath(x, y)</pre>
+<pre class="brush: python">moveto(x, y)</pre>
+<pre class="brush: python">lineto(x, y)</pre>
+<pre class="brush: python">curveto(x1, y1, x2, y2, x3, y3)</pre>
+<pre class="brush: python">closepath()</pre>
+<pre class="brush: python">endpath(draw=True)                         # Returns a BezierPath.</pre>
+<pre class="brush: python">drawpath(path) </pre>
+<h3>Path iterator</h3>
+<p>The <span class="inline_code">directed()</span> command is an iterator that yields (angle, point)-tuples for the given "list of points" (a <span class="inline_code">BezierPath</span>, the return value from <span class="inline_code">BezierPath.points()</span> or a list of <span class="inline_code">PathElement</span> objects). For each (angle, point)-tuple, the angle represents the direction of this point on the path. To get the normal (i.e. perpendicular) of the point, rotate the angle by +90 or -90.</p>
+<pre class="brush: python">directed(points)</pre>
+<p>This is useful if you want to have shapes following a path, for example, to fit text on a path:</p>
+<div class="example">
+<pre>from nodebox.graphics import *<br /><br />path = BezierPath()<br />path.moveto(100, 50)<br />path.curveto(200, 100, 300, 0, 400, 50)<br /><br />txt = "NodeBox for OpenGL" # Create a Text object for each character.<br />glyphs = [Text(char, fontname="Droid Sans Mono") for char in txt]<br /><br />def draw(canvas):<br />&nbsp;&nbsp;&nbsp; background(1)<br />&nbsp;&nbsp;&nbsp; fill(0)<br />&nbsp;&nbsp;&nbsp; points = path.points(amount=len(glyphs), start=0.05, end=0.95)<br />&nbsp;&nbsp;&nbsp; for i, (angle, pt) in enumerate(directed(points)):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; translate(pt.x, pt.y)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rotate(angle)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; text(glyphs[i], x=-textwidth(glyphs[i])/2)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop()<br />&nbsp;&nbsp;&nbsp; drawpath(path, fill=None, stroke=(0,0,0,0.5))<br />&nbsp;&nbsp;&nbsp; <br />canvas.size = 600, 150<br />canvas.run(draw) </pre>
+</div>
+<p><img src="/media/img/nodebox-paths-directed.jpg" alt="nodebox-paths-directed" class="image_border" /></p>
+<p><a title="supershape" name="supershape"></a></p>
+<h3>Supershape</h3>
+<p>The <span class="inline_code">supershape()</span> command can be used to generate a range of natural-looking shapes (<a href="http://www.genicap.com/" target="_self">Gielis</a>, 2003).<br /> It returns a <span class="inline_code">BezierPath</span>, which can be drawn with <span class="inline_code">drawpath()</span>.</p>
+<table border="0">
+<tbody>
+<tr>
+<td>
+<div style="text-align: center;"><img src="/media/img/nodebox-paths-supershape1.jpg" /><br /><span class="small_text">m=3, n1=1.0, n2=1.0, n3=1.0</span></div>
+</td>
+<td>
+<div style="text-align: center;"><img src="/media/img/nodebox-paths-supershape2.jpg" /><br /><span class="small_text">m=1, n1=0.65, n2=0.35, n3=0.35</span></div>
+</td>
+<td>
+<div style="text-align: center;"><img src="/media/img/nodebox-paths-supershape3.jpg" /><br /><span class="small_text">m=16, n1=1.5, n2=0.5, n3=-0.75</span></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<pre class="brush: python">supershape(x, y, width, height, m, n1, n2, n3, points=100, percentage=1.0, range=2*pi)</pre>
+<h3>Clipping mask</h3>
+<p>Drawing commands between <span class="inline_code">beginclip() </span>and <span class="inline_code">endclip()</span> are constrained to the shape of the given path.</p>
+<pre class="brush: python">beginclip(path)</pre>
+<pre class="brush: python">endclip()</pre>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2><a name="image" title="image"></a>Image</h2>
+<p>The <span class="inline_code">image()</span> command draws an image to the canvas. It can load anything from a file path to an <span class="inline_code">Image</span>, <span class="inline_code">Pixels</span> or <span class="inline_code">Texture</span> <span class="inline_code"></span>object. However, the most efficient way is to create an <span class="inline_code">Image</span> object before the animation starts and reuse it (the image texture will be cached along with an OpenGL Display List):</p>
+<div class="example">
+<pre>from nodebox.graphics import *<br /><br />beetle = Image("g/beetle.png")<br /><br />def draw(canvas):<br />&nbsp;&nbsp;&nbsp; canvas.clear()<br />&nbsp;&nbsp;&nbsp; image(beetle, x=100, y=100)<br /><br />canvas.run(draw) </pre>
+</div>
+<p>The <span class="inline_code">Image</span> object can be used to load an image from file. Optionally, it will be rescaled to the given width and height. An image can also be loaded as a byte string (e.g. a download from the internet) by setting <span class="inline_code">path</span> to <span class="inline_code">None</span> and <span class="inline_code">data</span> to the byte string.</p>
+<pre class="brush: python">img = Image(path, x=0, y=0, width=None, height=None, data=None)</pre>
+<pre class="brush: python">img.xy                                     # Tuple of (x,y)-values.<br />img.x                                      # Horizontal offset.<br />img.y                                      # Vertical offset.<br />img.width                                  # Image width in pixels.<br />img.height                                 # Image height in pixels.<br />img.size                                   # Tuple of (width,height)-values.<br />img.color                                  # Default: Color(1.0).<br />img.alpha                                  # Default: 1.0.<br />img.texture                                # Texture object.<br />img.quad                                   # Quad object.</pre>
+<pre class="brush: python">img.copy(texture=None, width=None, height=None)<br />img.save(path)</pre>
+<pre class="brush: python">img.adjust(r=1.0, g=1.0, b=1.0, a=1.0)<br />img.distort(dx1=0, dy1=0, dx2=0, dy2=0, dx3=0, dy3=0, dx4=0, dy4=0)</pre>
+<pre class="brush: python">img.draw(<br />       x = None, <br />       y = None, <br />   width = None, <br />  height = None, <br />   alpha = None, <br />   color = None,<br />  filter = None)</pre>
+<h3>Image state commands</h3>
+<p>The <span class="inline_code">image()</span> command draws an image to the screen. It can load an image file path, a <span class="inline_code">Texture</span>, <span class="inline_code">Image</span>, or <span class="inline_code">Pixels</span> object, or a byte string passed to the <span class="inline_code">data</span> parameter. The most efficient way is to to create an <span class="inline_code">Image</span> object before the animation starts and reuse it. If optional parameters are given, they will take precedence over any property in the <span class="inline_code">Image</span>. The optional <span class="inline_code">alpha</span> is the image's opacity as a value between 0.0-1.0. The optional <span class="inline_code">color</span> is a <span class="inline_code">Color</span> or a (R,G,B,A)-tuple used to colorize the image pixels.</p>
+<pre class="brush: python">image(img, <br />       x = None, <br />       y = None, <br />   width = None, <br />  height = None, <br />   alpha = None, <br />   color = None,<br />  filter = None, <br />    data = None)</pre>
+<p>The <span class="inline_code">imagesize()</span> command returns a (width,height)-tuple with the image dimensions.<br />The <span class="inline_code">crop()</span> command returns a rectangular portion of the image as a new <span class="inline_code">Image</span>.</p>
+<pre class="brush: python">imagesize(img)</pre>
+<pre class="brush: python">crop(img, x=0, y=0, width=None, height=None)</pre>
+<h3>Image quad distortion</h3>
+<p>Drawing an image involves two steps: (1) creating a texture from an image file, and (2) "mounting" the texture on a shape. This shape is a quadrilateral (four sides) of which the vertices do not necessarily have a straight angle &ndash; i.e. the corners can be distorted with the <span class="inline_code">Image.quad</span> property. The image will have to be re-cached when this happens, making quad distortion in real-time quite slow.</p>
+<pre class="brush: python">quad = Quad(dx1=0, dy1=0, dx2=0, dy2=0, dx3=0, dy3=0, dx4=0, dy4=0)</pre>
+<pre class="brush: python">quad.copy()<br />quad.reset()</pre>
+<pre class="brush: python">quad.dx1                                   # Top left, horizontal offset.<br />quad.dy1                                   # Top left, vertical offset.<br />quad.dx2                                   # Top right, horizontal offset.<br />quad.dy2                                   # Top right, vertical offset.<br />quad.dx3                                   # Bottom right, horizontal offset.<br />quad.dy3                                   # Bottom right, vertical offset.<br />quad.dx4                                   # Bottom left, horizontal offset.<br />quad.dy4                                   # Bottom left, vertical offset.</pre>
+<p>Alternatively, the <span class="inline_code">Image.distort()</span> method can be used.</p>
+<h3>Image pixels</h3>
+<p>The <span class="inline_code">Pixels</span> object can be used to retrieve a list of color values (0-255) for each pixel in an image. Values can be modified, after which <span class="inline_code">Pixels.update()</span> must be called to reflect the changes (this is a costly operation). A <span class="inline_code">Pixels</span> object can be passed to the <span class="inline_code">image()</span> command to draw it to the canvas.</p>
+<pre class="brush: python">pixels = Pixels(img)</pre>
+<pre class="brush: python">pixels.width                               # Image width in pixels.<br />pixels.height                              # Image height in pixels.<br />pixels.size                                # Tuple of (width,height)-values.<br />pixels[i]                                  # Tuple of (R,G,B,A)-values.<br />pixels.texture</pre>
+<pre class="brush: python">pixels.get(i,j)                            # Returns a Color.<br />pixels.set(i,j, clr)                            <br />pixels.map(function)<br />pixels.update()<br />pixels.copy()</pre>
+<ul>
+<li><span class="inline_code">Pixels.map()</span> applies a function to each pixel. Function takes (and must return) an (R,G,B,A)-tuple.<br /><span class="inline_code"></span></li>
+<li><span class="inline_code">Pixels.get()</span> returns the pixel at row <span class="inline_code">i</span>, column <span class="inline_code">j</span> as a <span class="inline_code">Color</span> object.</li>
+<li><span class="inline_code">Pixels.set()</span> sets the pixel at row <span class="inline_code">i</span>, column <span class="inline_code">j</span> from a <span class="inline_code">Color</span> object.<br />These methods are safer and more convenient than simply indexing the list (which contains tuples of values between 0-255), but they are also more costly operations&nbsp; because <span class="inline_code">Color</span> objects are constructed.</li>
+</ul>
+<h3>Image animation</h3>
+<p>The <span class="inline_code">Animation</span> object can be used to create a "movie loop" from a list of <span class="inline_code">Image</span> frames. The <span class="inline_code">duration</span> specifies the time for the entire animation to run.</p>
+<p>Animations are useful to cache effects such as <a href="/admin/flatpages/flatpage/7/_|_Physics" target="_self">physics</a> (e.g. an explosion) that have been prepared with an <span class="inline_code">OffscreenBuffer</span>. Playing a movie loop is usually faster than redoing the physics math.</p>
+<pre class="brush: python">animation = Animation(images=[], duration=None, loop=False)</pre>
+<pre class="brush: python">animation.frames                           # List of Image objects.<br />animation.frame                            # Current Image frame.<br />animation.done                             # True =&gt; the animation has stopped.</pre>
+<pre class="brush: python">animation.update()                         # Skip to the next frame to play.<br />animation.draw()<br />animation.copy()</pre>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2>Image filters</h2>
+<p>The <span class="inline_code">render()</span> command returns an <span class="inline_code">Image</span> from a function containing drawing commands &ndash; i.e. a <i>procedural</i> image. This is useful if for example you need to render a blur effect on a <span class="inline_code">BezierPath</span> or <span class="inline_code">Text</span>. Rendering is done in an <span class="inline_code">OffscreenBuffer</span>. The previous contents of this buffer are cleared when the width or height of the buffer changes or when <span class="inline_code">clear=True</span>. This is the default behavior, but in some situations it can be useful to set <span class="inline_code">clear=False</span> to draw cumulatively on top of the previous <span class="inline_code">render()</span> call.</p>
+<p>The <span class="inline_code">filter()</span> command returns a new <span class="inline_code">Image</span> with the given <span class="inline_code">Filter</span> applied. This is generally only useful if you have created <a href="/admin/flatpages/flatpage/7/_|_Shader" target="_self">custom filters</a>.</p>
+<pre class="brush: python">render(function, width, height, clear=True)</pre>
+<pre class="brush: python">filter(img, filter=None, clear=True) </pre>
+<p>A range of easy-to-use filters is available, building on <span class="inline_code">render()</span> and <span class="inline_code">filter()</span>. For example:</p>
+<table>
+<tbody>
+<tr>
+<td>
+<div style="text-align: center;"><img src="/media/img/nodebox-filters-normal.jpg" alt="nodebox-filters-normal" /><br /><span class="smallcaps">normal</span></div>
+</td>
+<td class="smallcaps">
+<div align="center"><img src="/media/img/nodebox-filters-blur.jpg" alt="nodebox-filters-blur" /><br />blurred</div>
+</td>
+<td>
+<div style="text-align: center;"><img src="/media/img/nodebox-filters-mirror.jpg" alt="nodebox-filters-mirror" /></div>
+<div align="center"><span class="smallcaps">mirrored</span></div>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Image filters | generators</h3>
+<p>The <span class="inline_code">solid()</span> command returns an <span class="inline_code">Image</span> with a solid fill color.<br />The <span class="inline_code">gradient()</span> command returns an <span class="inline_code">Image</span> with a gradient fill (either <span class="inline_code">LINEAR</span> or <span class="inline_code">RADIAL</span>).</p>
+<pre class="brush: python">solid(width, height, fill=Color(0,0))</pre>
+<pre class="brush: python">gradient(width, height, clr1=Color(0), clr2=Color(1), type=LINEAR)</pre>
+<h3>Image filters | color</h3>
+<p>A color filter returns a new <span class="inline_code">Image</span> with modified pixels.</p>
+<ul>
+<li><span class="inline_code">invert()</span> swaps all the color channels (e.g. black becomes white).<span class="inline_code"></span></li>
+<li><span class="inline_code">colorize()</span> multiplies the R,G,B,A channels with <span class="inline_code">color</span> and adds <span class="inline_code">bias</span>.&nbsp;</li>
+<li><span class="inline_code">adjust()</span> modifies the image brightness, contrast, and/or hue.&nbsp;&nbsp;</li>
+<li><span class="inline_code">desaturate()</span> returns a grayscale image.&nbsp;&nbsp;</li>
+<li><span class="inline_code">brightpass()</span> makes pixels whose luminance falls below the threshold black.</li>
+<li><span class="inline_code">blur()</span> returns a blurred image, where <span class="inline_code">kernel</span> defines the size of the convolution matrix (3x3 | 5x5 | 9x9), <span class="inline_code">scale</span> the radius of the effect (higher scale = rougher + faster blur) and <span class="inline_code">amount</span> the number of the times to apply the blur. Setting an amount produces a nicer effect than repeatedly using <span class="inline_code">blur()</span> in a <span class="inline_code">for</span>-loop.</li>
+<li><span class="inline_code">dropshadow()</span> returns a blurred grayscale image, with <span class="inline_code">Image.color</span> set to (0,0,0,1).<br />If filters are not supported, returns a grayscale version without the blur.</li>
+</ul>
+<pre class="brush: python">invert(img)</pre>
+<pre class="brush: python">colorize(img, color=(1,1,1,1), bias=(0,0,0,0))</pre>
+<pre class="brush: python">adjust(img, brightness=1.0, contrast=1.0, saturation=1.0, hue=0.0)</pre>
+<pre class="brush: python">desaturate(img)</pre>
+<pre class="brush: python">brightpass(img, threshold=0.3)</pre>
+<pre class="brush: python">blur(img, kernel=9, scale=1.0, amount=1, cumulative=False)</pre>
+<pre class="brush: python">dropshadow(img, alpha=0.5, amount=2) </pre>
+<h3>Image filters | alpha compositing</h3>
+<p>An alpha compositing filter returns a new <span class="inline_code">Image</span> that blends the pixels of the two given images.</p>
+<ul>
+<li><span class="inline_code">transparent()</span> applies a solid alpha channel to the image.</li>
+<li><span class="inline_code">mask()</span> applies <span class="inline_code">img2</span> as alpha channel to <span class="inline_code">img1</span>, where <span class="inline_code">img2</span> is a grayscale image (e.g. with <span class="inline_code">desaturate()</span>). The black areas make the first image transparent (e.g. punch holes in it).</li>
+<li><span class="inline_code">blend()</span> mixes the pixels using a set of math formulas, comparable to blend modes in Photoshop:</li>
+</ul>
+<table>
+<tbody>
+<tr>
+<td><span class="smallcaps">Mode</span></td>
+<td><span class="smallcaps">Effect</span></td>
+</tr>
+<tr>
+<td><span class="inline_code">ADD </span></td>
+<td>Pixels are added.</td>
+</tr>
+<tr>
+<td><span class="inline_code">SUBTRACT </span></td>
+<td>Pixels are subtracted.</td>
+</tr>
+<tr>
+<td><span class="inline_code">LIGHTEN </span></td>
+<td>Lightest value for each pixel.</td>
+</tr>
+<tr>
+<td><span class="inline_code">DARKEN </span></td>
+<td>Darkest value for each pixel.</td>
+</tr>
+<tr>
+<td><span class="inline_code">MULTIPLY </span></td>
+<td>Pixels are multiplied, resulting in a darker image.</td>
+</tr>
+<tr>
+<td><span class="inline_code">SCREEN </span></td>
+<td>Pixels are inverted-multiplied-inverted, resulting in a brighter picture.</td>
+</tr>
+<tr>
+<td><span class="inline_code">OVERLAY </span></td>
+<td>Combines multiply and screen: light parts become ligher, dark parts darker.</td>
+</tr>
+<tr>
+<td><span class="inline_code">HARDLIGHT</span></td>
+<td>Like overlay, but uses the blend image's luminance.</td>
+</tr>
+<tr>
+<td><span class="inline_code">HUE </span></td>
+<td>Hue from the blend image, brightness and saturation from the base image.</td>
+</tr>
+</tbody>
+</table>
+&nbsp;
+<pre class="brush: python">transparent(img, alpha=1.0)</pre>
+<pre class="brush: python">mask(img1, img2, alpha=1.0, dx=0, dy=0)</pre>
+<pre class="brush: python">blend(img1, img2, mode=OVERLAY, alpha=1.0, dx=0, dy=0)</pre>
+<p>Each blend mode is also available as a separate command:&nbsp;</p>
+<pre class="brush: python">add(img1, img2, alpha=1.0, dx=0, dy=0)</pre>
+<pre class="brush: python">subtract(img1, img2, alpha=1.0, dx=0, dy=0)</pre>
+<pre class="brush: python">lighten(img1, img2, alpha=1.0, dx=0, dy=0)</pre>
+<pre class="brush: python">darken(img1, img2, alpha=1.0, dx=0, dy=0)</pre>
+<pre class="brush: python">multiply(img1, img2, alpha=1.0, dx=0, dy=0)</pre>
+<pre class="brush: python">screen(img1, img2, alpha=1.0, dx=0, dy=0)</pre>
+<pre class="brush: python">overlay(img1, img2, alpha=1.0, dx=0, dy=0)</pre>
+<pre class="brush: python">hardlight(img1, img2, alpha=1.0, dx=0, dy=0) </pre>
+<pre class="brush: python">hue(img1, img2, alpha=1.0, dx=0, dy=0)</pre>
+<p>The <span class="inline_code">dx</span> and <span class="inline_code">dy</span> parameters define the offset in pixels of <span class="inline_code">img2</span> from the bottom-left of <span class="inline_code">img1</span>.</p>
+<h3>Image filters | distortion</h3>
+<p>A distortion filter returns a new <span class="inline_code">Image</span> where the pixels from the given image are transformed (e.g. rotated). The <span class="inline_code">dx</span> and <span class="inline_code">dy</span> parameters define the relative origin of the effect (default = image center). The <span class="inline_code">radius</span> parameter defines the extent of the effect, where 1.0 means that it encompasses the entire image. The <span class="inline_code">zoom</span> parameter defines the intensity of the effect, usually as a number between 0.0-1.0 (or 0.0-2.0 for <span class="inline_code">stretch()</span>).</p>
+<pre class="brush: python">bump(img, dx=0.5, dy=0.5, radius=0.5, zoom=0.5)</pre>
+<pre class="brush: python">dent(img, dx=0.5, dy=0.5, radius=0.5, zoom=0.5)</pre>
+<pre class="brush: python">pinch(img, dx=0.5, dy=0.5, zoom=0.75)</pre>
+<pre class="brush: python">twirl(img, dx=0.5, dy=0.5, radius=1.0, angle=180.0)</pre>
+<pre class="brush: python">splash(img, dx=0.5, dy=0.5, radius=0.5)</pre>
+<pre class="brush: python">stretch(img, dx=0.5, dy=0.5, radius=0.5, zoom=1.0)</pre>
+<pre class="brush: python">mirror(img, dx=0.5, dy=0.5, horizontal=True, vertical=True)</pre>
+<h3>Image filters | light</h3>
+<p>A light filter returns a new <span class="inline_code">Image</span> with fringes of light around bright objects in the image (e.g. "magic glow").</p>
+<ul>
+<li><span class="inline_code">glow()</span> uses a combination of <span class="inline_code">blur()</span> and <span class="inline_code">add()</span>.</li>
+<li><span class="inline_code">bloom()</span> is slower, using a combination of <span class="inline_code">brightpass()</span>, <span class="inline_code">blur()</span> and <span class="inline_code">glow()</span>. <br />The <span class="inline_code">amount</span> parameter defines the number of times to blur. <br />Pixels whose luminance falls below the given <span class="inline_code">threshold</span> produce no glow.</li>
+</ul>
+<pre class="brush: python">glow(img, intensity=0.5, amount=1)</pre>
+<pre class="brush: python">bloom(img, intensity=0.5, amount=1, threshold=0.3)</pre>
+<h3>Live filters</h3>
+<p>These commands do not return an <span class="inline_code">Image</span>. Instead, they can be passed to the optional <span class="inline_code">filter</span> parameter of the <span class="inline_code">image()</span> command. The advantage is that it is fast because no <span class="inline_code">OffscreenBuffer</span> is involved behind the scenes &ndash; the image is directly drawn with the effect (instead of rendered into a new texture) so everything happens in GPU. The drawback is that the <span class="inline_code">image()</span> command's <span class="inline_code">color</span> and <span class="inline_code">alpha</span> parameters won't work because the filter overrides them.</p>
+<pre class="brush: python">inverted()</pre>
+<pre class="brush: python">colorized(color=(1,1,1,1), bias=(0,0,0,0))</pre>
+<pre class="brush: python">adjusted(mode, v) # mode = BRIGHTNESS, CONTRAST, SATURATION, HUE</pre>
+<pre class="brush: python">desaturated()</pre>
+<pre class="brush: python">blurred(scale=1.0) </pre>
+<pre class="brush: python">masked(img, alpha=1.0, dx=0, dy=0)</pre>
+<pre class="brush: python">blended(mode, img, alpha=1.0, dx=0, dy=0)  # mode = MULTIPLY, SCREEN, ...</pre>
+<pre class="brush: python">distorted(type, dx=0.5, dy=0.5, **kwargs)  # type = BUMP, DENT, TWIRL, ...</pre>
+<ul>
+<li><span class="inline_code">blurred()</span> uses a simple Gaussian 3x3 kernel; higher would negate performance gain over <span class="inline_code">blur()</span>.</li>
+<li><span class="inline_code">distorted()</span> takes optional <span class="inline_code">radius</span>, <span class="inline_code">zoom</span>, <span class="inline_code">angle</span>, <span class="inline_code">horizontal</span> and <span class="inline_code">vertical</span> parameters.<br />The <span class="inline_code">**kwargs</span> is just the Pythonic way of saying that a function takes optional parameters.</li>
+</ul>
+<p>For example:</p>
+<div class="example">
+<pre>image("beetle.png", filter=distorted(PINCH, zoom=0.25)) </pre>
+</div>
+<p>Live filters (with the exception of <span class="inline_code">blended()</span>) will also work on older hardware (e.g. OpenGL 1.5) when used with images that do not contain transparency.</p>
+<p><br /><span class="small_text"><span style="text-decoration: underline;">References</span>: <a href="http://blog.mouaif.org/?p=94" target="_self">mouaif.org</a> (2009), <a href="http://www.gamerendering.com/2008/10/11/gaussian-blur-filter-shader/" target="_self">gamerendering.com</a> (2008), <a href="http://dem.ocracy.org/libero/photobooth/" target="_self">dem.ocracy.org</a> (2007) </span></p>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2><a name="text" title="text"></a>Text</h2>
+<p>The <span class="inline_code">Text</span> object prepares a formatted string of text that can be drawn at a given position. The most efficient way is to create a <span class="inline_code">Text</span> object before the animation starts and reuse it (the character glyphs are cached along with an OpenGL Vertex Array). If a <span class="inline_code">width</span> is given, text will span multiple lines if it exceeds the width. Optional parameters include: <span class="inline_code">fontname</span>, <span class="inline_code">fontsize</span>, <span class="inline_code">fontweight</span>, <span class="inline_code">lineheight</span>, <span class="inline_code">align</span>, <span class="inline_code">fill</span>.</p>
+<pre class="brush: python">txt = Text(str, x=0, y=0, width=None, height=None)</pre>
+<pre class="brush: python">txt.xy                                     # Tuple of (x,y)-values.<br />txt.x                                      # Horizontal offset.<br />txt.y                                      # Vertical offset.<br />txt.width                                  # Text block width.<br />txt.height                                 # Text block height.<br />txt.size                                   # Tuple of (width, height)-values.<br />txt.mettrics                               # Tuple of (width, height)-values.  </pre>
+<pre class="brush: python">txt.text                                   # Text string, e.g. "Hello world".<br />txt.fontname                               # Default: "Droid Sans". <br />txt.fontsize                               # Default: 12<br />txt.fontweight                             # NORMAL, BOLD, ITALIC.<br />txt.lineheight                             # Default: 1.2<br />txt.align                                  # LEFT, RIGHT, CENTER.<br />txt.fill                                   # A Color.</pre>
+<pre class="brush: python">txt.draw(x=None, y=None)<br />txt.style(i, j, property1, property2, ...)<br />txt.copy()</pre>
+<ul>
+<li><span class="inline_code">Text.size</span> yields the dimensions of the text block.</li>
+<li><span class="inline_code">Text.metrics</span> yields the dimensions of the text content.</li>
+<li><span class="inline_code">Text.style()</span> can be used to format portions of the string (starting at index <span class="inline_code">i</span> and ending at index <span class="inline_code">j</span>). Valid arguments include: <span class="inline_code">fontname</span>, <span class="inline_code">fontsize</span>, <span class="inline_code">fontweight</span>, <span class="inline_code">lineheight</span>, <span class="inline_code">align</span>, <span class="inline_code">fill</span>.</li>
+</ul>
+<p>For example:</p>
+<div class="example">
+<pre>txt = Text("Hello world!", fontname="Droid Sans")<br />txt.style(5, 11, fontweight=BOLD, fill=Color(1,0,0)) </pre>
+</div>
+<h3>Text state commands</h3>
+<p>Consistent with NodeBox for Mac OS X, <span class="inline_code">font()</span>, <span class="inline_code">lineheight()</span> and <span class="inline_code">align()</span> set the current text state<span class="inline_code"></span>. The difference is that, whereas the OS X version of <span class="inline_code">font()</span> takes the PostScript font name (e.g. "DroidSerif-Bold"), here we use the font family name ("Droid Serif") and define the weight separately: <br /><span class="inline_code">font("Droid Serif", fontweight=BOLD)</span>.</p>
+<pre class="brush: python">font(fontname=None, fontsize=None, fontweight=None, file=None)</pre>
+<pre class="brush: python">fontname(name=None)</pre>
+<pre class="brush: python">fontsize(size=None)</pre>
+<pre class="brush: python">fontweight()                               # NORMAL, BOLD, ITALIC, (BOLD,ITALIC)</pre>
+<pre class="brush: python">lineheight(size=None)</pre>
+<pre class="brush: python">align(mode=None)                           # LEFT, RIGHT, CENTER</pre>
+<p>The <span class="inline_code">text()</span> command draws a string using the current color, transformation and text state. The state can be overridden by passing an optional <span class="inline_code">fill</span>, <span class="inline_code">fontname</span>, <span class="inline_code">fontsize</span> , <span class="inline_code">fontweight</span>, <span class="inline_code">lineheight</span> and/or <span class="inline_code">align</span> to the command. However, it is faster to create a <span class="inline_code">Text</span> object before the animation starts and pass this to <span class="inline_code">text()</span> instead of a string. In this case the current text state is ignored (<span class="inline_code">Text</span> properties override it).&nbsp;</p>
+<pre class="brush: python">text(str, x=None, y=None, width=None, height=None, draw=True)</pre>
+<pre class="brush: python">textwidth(txt)                             # Returns the text content width.</pre>
+<pre class="brush: python">textheight(txt, width=None)                # Returns the text content height.</pre>
+<pre class="brush: python">textmetrics(txt, width=None)               # Returns a (width,height)-tuple.</pre>
+<h3>Text to path</h3>
+<p>The <span class="inline_code">textpath()</span> command returns a <span class="inline_code">BezierPath</span> from the given text string. This will only work with ASCII characters and the default fonts (<i>Droid Sans</i>, <i>Droid Sans Mono</i>, <i>Droid Serif</i>, <i>Arial</i>). The <span class="inline_code">fontname</span>, <span class="inline_code">fontsize</span> and <span class="inline_code">fontweight</span> can be given as optional parameters, but <span class="inline_code">width</span>, <span class="inline_code">height</span>, <span class="inline_code">lineheight</span> and <span class="inline_code">align</span> are ignored. See <span class="inline_code">/nodebox/font/glyph.py</span> how to activate other fonts.&nbsp;</p>
+<pre class="brush: python">textpath(string, x=0, y=0, fontname=None, fontsize=None, fontweight=None)</pre>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2><a name="utility" title="utility"></a>Utility commands</h2>
+<p>The <span class="inline_code">random()</span> command returns a number between <span class="inline_code">v1</span> and <span class="inline_code">v2</span>, including <span class="inline_code">v1</span> but not <span class="inline_code">v2</span>. <br />The <span class="inline_code">bias</span> (0.0-1.0) represents preference towards lower or higher numbers.</p>
+<p>The <span class="inline_code">noise()</span> command returns a smooth value between -1.0 and 1.0.<br />Smaller successive <span class="inline_code">x</span>, <span class="inline_code">y</span>, <span class="inline_code">z</span> steps (e.g. 0.005-0.1) yield a smoother noise "landscape".</p>
+<p>The <span class="inline_code">grid()</span> command is an iterator that yields (x,y)-tuples for the given number of rows and columns.<br />The space between each point is determined by <span class="inline_code">colwidth</span> and <span class="inline_code">colheight</span>.&nbsp;</p>
+<p>The <span class="inline_code">files()</span> command returns a list of filenames found at the given path.<br />The contents of a file can be obtained with <span class="inline_code">open(filename).read()</span>.</p>
+<pre class="brush: python">random(v1=1.0, v2=None, bias=None)</pre>
+<pre class="brush: python">noise(x, y=0, z=0) </pre>
+<pre class="brush: python">grid(cols, rows, colwidth=1, rowheight=1, shuffled=False)</pre>
+<pre class="brush: python">files(path="*")</pre>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2><a name="layer" title="layer"></a>Layer</h2>
+<p>The <span class="inline_code">Layer</span> object can be used to group shapes, paths, texts and images. A layer can be transformed and modified without affecting other layers. Multiple layers can be stacked in a specific order (the order in which they are added to the canvas with <span class="inline_code">Canvas.append()</span>). Each frame, the canvas will call <span class="inline_code">Layer.draw()</span> and propagate events to the layer if it has <span class="inline_code">enabled</span> set to <span class="inline_code">True</span>.</p>
+<p>A layer can contain child layers that transform relative to the parent. For example: an insect's body can be drawn in a layer, with each of its legs drawn in a child layer. When the body rotates, the legs rotate with it, but they can still be manipulated separately (e.g. to make them scuttle or grasp an object).</p>
+<pre class="brush: python">layer = Layer(<br />         x = 0, <br />         y = 0, <br />     width = None, <br />    height = None, <br />    origin = (0,0), <br />     scale = 1.0, <br />  rotation = 0, <br />   opacity = 1.0, <br />  duration = 0.0, <br />      name = None, <br />    parent = None)</pre>
+<pre class="brush: python">layer = Layer.from_image(img, x=0, y=0, ...)</pre>
+<pre class="brush: python">layer = Layer.from_function(function, x=0, y=0, ...)</pre>
+<pre class="brush: python">layer.name                                 # A (unique) string, default=None.<br />layer.canvas                               # Canvas this layer is drawn to.<br />layer.parent                               # Layer this layer is child of.<br />layer.layers                               # List of child Layer objects.<br />layer.[child_name]                         # Child Layer object with given name.</pre>
+<pre class="brush: python">layer.xy                                   # Tuple of (x,y)-values.<br />layer.x                                    # Horizontal offset.<br />layer.y                                    # Vertical offset.<br />layer.width                                # Layer width in pixels.<br />layer.height                               # Layer height in pixels.<br />layer.bounds                               # Tuple of (x,y,width,height)-values. </pre>
+<pre class="brush: python">layer.absolute_origin                      # Absolute origin as (x,y)-tuple.<br />layer.relative_origin                      # Relative origin as (x,y)-tuple.<br />layer.scaling                              # Relative scale (e.g. 0.0-1.0). <br />layer.rotation                             # Rotation in degrees.<br />layer.opacity                              # Alpha opacity between 0.0-1.0.<br />layer.duration                             # Motion tweening time in seconds.<br />layer.done                                 # Motion tweening has finished?<br />layer.hidden                               # True =&gt; draw the layer.<br />layer.top                                  # True =&gt; draw over parent.<br />layer.flipped                              # True =&gt; mirror horizontally.<br />layer.clipped                              # True =&gt; clip children to bounds.</pre>
+<pre class="brush: python">layer.transform                            # geometry.AffineTransform object.</pre>
+<pre class="brush: python">layer.translate(x, y)<br />layer.rotate(angle)<br />layer.scale(f)<br />layer.flip() </pre>
+<pre class="brush: python">layer.copy(parent=None, canvas=None)<br />layer.append(layer)</pre>
+<pre class="brush: python">layer.update()                             # Override in a subclass.<br />layer.draw()                               # Override in a subclass.</pre>
+<pre class="brush: python">layer.render() &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # Returns an Image. </pre>
+<pre class="brush: python">layer.absolute_position()<br />layer.contains(x, y)<br />layer.layer_at(x, y, clipped=False, enabled=False)<br />layer.traverse(visit=lambda layer: None)</pre>
+<ul>
+<li><span class="inline_code">Layer.translate()</span>, <span class="inline_code">Layer.</span><span class="inline_code">rotate()</span>, <span class="inline_code">Layer.</span><span class="inline_code">scale()</span> and <span class="inline_code">Layer.</span><span class="inline_code">flip()</span> transform the layer.<br />Layers will otherwise ignore the canvas transformation state.<br />Transformations originate from the layer's <span class="inline_code">origin</span>, e.g. relative (0.5,o.5) = layer center.<br />Transformations take <span class="inline_code">Layer.duration</span> seconds to complete (smooth motion tweening).</li>
+<li><span class="inline_code">Layer.copy()</span> returns a new <span class="inline_code">Layer</span> containing copies of all the child layers.</li>
+<li><span class="inline_code">Layer.draw()</span> and <span class="inline_code">Layer.update()</span> are called each frame and must be overridden in a subclass.</li>
+<li><span class="inline_code">Layer.absolute_position()</span> gives the absolute location (x,y) on the canvas.<br />This is useful for child layers, whose <span class="inline_code">Layer.x</span> and <span class="inline_code">Layer.y</span> are relative to the parent layer.</li>
+<li><span class="inline_code">Layer.layer_at()</span> returns the (visible) child layer (or <span class="inline_code">None</span>) that contains the given position.<br />With <span class="inline_code">clipped=True</span>, no parts of child layers outside the parent's bounds are checked.<br />With <span class="inline_code">enabled=True</span>, only enabled layers are checked (useful for events).</li>
+</ul>
+<h3>Layers and None</h3>
+<p><span class="inline_code">Layer.layer_at()</span> returns either a <span class="inline_code">Layer</span> or <span class="inline_code">None</span>. Since <span class="inline_code">Layer</span> is a subclass of <span class="inline_code">list</span>, the expression <span class="inline_code">if layer: ...</span> calls <span class="inline_code">len(layer)</span>. Layers without children therefore evaluate to 0, which is <span class="inline_code">False</span>. Therefore you should always use an explicit <span class="inline_code">if layer is not None: ...</span> expression.</p>
+<h3>Layer events</h3>
+<p>The canvas fires events when input from the mouse or keyboard is detected. This happens before the current frame is drawn. Events will be passed on to layers that have been appended to the canvas and have <span class="inline_code">enabled</span> set to <span class="inline_code">True</span>. When the mouse moves over a layer, this layer will have its <span class="inline_code">focus</span> property set to <span class="inline_code">True</span> and the layer will be set as the value for <span class="inline_code">Canvas.focus</span>. The event methods are meant to be overridden in a subclass of <span class="inline_code">Layer</span>.</p>
+<pre class="brush: python">layer.enabled                              # True =&gt; will receive events.<br />layer.pressed                              # True =&gt; mouse pressed on layer.<br />layer.dragged                              # True =&gt; mouse dragged on layer.<br />layer.focus                                # True =&gt; mouse hovering over layer.</pre>
+<pre class="brush: python">layer.on_mouse_enter(mouse)</pre>
+<pre class="brush: python">layer.on_mouse_leave(mouse)</pre>
+<pre class="brush: python">layer.on_mouse_motion(mouse)</pre>
+<pre class="brush: python">layer.on_mouse_press(mouse)</pre>
+<pre class="brush: python">layer.on_mouse_release(mouse)</pre>
+<pre class="brush: python">layer.on_mouse_drag(mouse)</pre>
+<pre class="brush: python">layer.on_mouse_scroll(mouse)</pre>
+<pre class="brush: python">layer.on_key_press(keys)</pre>
+<pre class="brush: python">layer.on_key_release(keys)</pre>
+<h3>Layer bounds</h3>
+<p>The layer bounds is the rectangular area between (<span class="inline_code">x</span>, <span class="inline_code">y</span>, <span class="inline_code">x+width</span>, <span class="inline_code">y+height</span>) that triggers mouse events. Child layers and content in the <span class="inline_code">Layer.draw()</span> method are allowed to overflow the edges of the bounds, unless <span class="inline_code">Layer.clipped</span> is explicitly set to <span class="inline_code">True</span> (in which case all content is cut off at the bounding edge).</p>
+<p>A layer does not necessarily require a defined width and height. When omitted, the layer is regarded as spanning "infinitely" across the canvas. It will trigger events all across the canvas. In this case it should not have a relative origin however, i.e. a (<span class="inline_code">float</span>, <span class="inline_code">float</span>)-tuple passed to the <span class="inline_code">origin</span> parameter of the <span class="inline_code">Layer</span> constructor. What is <i>0.5 of infinity</i>? Infinite layers should always use an absolute origin point.</p>
+<h3>Prototype-based inheritance</h3>
+<p>A layer is only useful if it subclassed with an implemented <span class="inline_code">Layer.draw()</span> method and / or event handlers. <br />Since <span class="inline_code">Layer</span> inherits from a <span class="inline_code">Prototype</span> base class, it is also possible to patch methods dynamically:</p>
+<pre class="brush: python">prototype.set_method(function, name=None)</pre>
+<pre class="brush: python">prototype.set_property(key, value) </pre>
+<ul>
+<li><span class="inline_code">Prototype.set_method()</span> dynamically attaches a function as a method to the object.<span class="inline_code"></span></li>
+<li><span class="inline_code">Prototype.set_property()</span> can be used to dynamically add a new property to the object.</li>
+</ul>
+<p>In the two examples below we compare subclassing to prototype-based inheritance:</p>
+<div class="example">
+<pre>from nodebox.graphics import *<br /><br />class Button(Layer):<br />    def __init__(self, *args, **kwargs):<br />        Layer.__init__(self, *args, **kwargs)<br />        self.clr = Color(random())<br />    def draw(self):<br />        rect(0, 0, self.width, self.height, fill=self.clr)<br />    def on_mouse_press(self, mouse):<br />        self.clr = Color(random())<br />    def copy(self):<br />        button = Layer.copy(self)<br />        button.clr = self.clr.copy()<br />        return button<br /><br />canvas.append(Button(0, 0, 100, 100))<br />canvas.run()</pre>
+</div>
+<p>This is exactly the same as:</p>
+<div class="example">
+<pre>from nodebox.graphics import *<br /><br />def button_draw(layer):<br />    rect(0, 0, layer.width, layer.height, fill=layer.clr)<br />def button_on_mouse_press(layer, mouse):<br />    layer.clr = Color(random())<br /><br />button = Layer(0, 0, 100, 100)<br />button.set_property("clr", Color(random()))<br />button.set_method(button_draw, name="draw")<br />button.set_method(button_on_mouse_press, name="on_mouse_press")<br /><br />canvas.append(button)<br />canvas.run()</pre>
+</div>
+<p>Both examples even have about the same amount of code, so what's the gain? The difference lies in the way both are copied. The subclass requires a new <span class="inline_code">copy()</span> method to correctly copy the additional properties in the subclass &ndash; <span class="inline_code">Layer.copy()</span> will of course only copy layer properties. The prototype-based approach takes care of this automatically.</p>
+<p>Subclassing is advised when you are developing a framework of classes that in turn will be used by others. <br />For sketches and hacking, the prototype-based approach may be quicker.</p>
+<h3>Group layer</h3>
+<p><span class="inline_code">Group</span> is a subclass of <span class="inline_code">Layer</span> that simply serves as a container for other layers. <br />It doesn't draw anything and it has a width and a height of <span class="inline_code">0</span>.</p>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2><a name="interaction" title="interaction"></a>Mouse &amp; keyboard</h2>
+<h3>Mouse</h3>
+<p>The <span class="inline_code">mouse</span> object stores the current state of the mouse input device. It can be retrieved with the <span class="inline_code">canvas.mouse</span> property in the main <span class="inline_code">draw()</span> loop and it is passed as a parameter to the mouse event handlers, e.g. <span class="inline_code">Layer.on_mouse_motion()</span>.</p>
+<pre class="brush: python">mouse = canvas.mouse</pre>
+<pre class="brush: python">mouse.x                             # Horizontal position.<br />mouse.y                             # Vertical position.<br />mouse.relative_x                    # Relative (0.0-1.0) to Canvas.width.<br />mouse.relative_y                    # Relative (0.0-1.0) to Canvas.height.<br />mouse.dx                            # Drag distance from previous x.<br />mouse.dy                            # Drag distance from previous y.<br />mouse.scroll                        # Scrollwheel offset.<br />mouse.pressed                       # True if the mouse button is pressed.<br />mouse.dragged                       # True if the mouse is dragged.<br />mouse.cursor                        # DEFAULT, CROSS, HAND, HIDDEN, TEXT, WAIT<br />mouse.button                        # LEFT, RIGHT, MIDDLE<br />mouse.modifiers                     # List of: CTRL, SHIFT, OPTION</pre>
+<h3>Keyboard</h3>
+<p>The <span class="inline_code">keys</span> object stores the current state of the keyboard input device. It can be retrieved with the <span class="inline_code">canvas.keys</span> property in the main <span class="inline_code">draw()</span> loop and it is passed as a parameter to the keyboard event handlers, e.g. <span class="inline_code">Layer.on_key_press()</span>. It is a list of keys currently pressed, with some additional properties:</p>
+<pre class="brush: python">keys = canvas.keys </pre>
+<pre class="brush: python">keys[]          # All keys pressed (SHIFT + "a" =&gt; [SHIFT, "a"]).<br />keys.char       # Last key pressed (SHIFT + "a" =&gt; "A").<br />keys.code       # Last key pressed (SHIFT + "a" =&gt; "a").<br />keys.modifiers  # List of modifier keys (CTRL, SHIFT, OPTION).<br />keys.pressed    # True if a key is pressed on the keyboard.</pre>
+<p><span class="inline_code">Keys.code</span> constants include: <span class="inline_code">BACKSPACE</span>, <span class="inline_code">TAB</span>, <span class="inline_code">ENTER</span>, <span class="inline_code">SPACE</span>, <span class="inline_code">ESCAPE</span>, <span class="inline_code">UP</span>, <span class="inline_code">DOWN</span>, <span class="inline_code">LEFT</span>, <span class="inline_code">RIGHT</span>.</p>
+<p>&nbsp;</p>
+<hr size="2" width="100%" />
+<h2><a name="canvas" title="canvas"></a>Canvas</h2>
+<p>The <span class="inline_code">Canvas</span> object opens an application window containing the drawing canvas when <span class="inline_code">Canvas.run()</span> is called. It is a list of <span class="inline_code">Layer</span> objects whose <span class="inline_code">draw()</span> method will be called each animation frame. It is also possible to draw directly to the canvas by overriding the<span class="inline_code"> Canvas.draw()</span> method, or by passing a custom <span class="inline_code">draw()</span> function to the <span class="inline_code">Canvas.run()</span> method:</p>
+<div class="example">
+<pre>from nodebox.graphics import *<br /><br />def draw(canvas):<br />&nbsp;&nbsp;&nbsp; canvas.clear() # Clear previous frame.<br />&nbsp;&nbsp;&nbsp; translate(250, 250)<br />&nbsp;&nbsp;&nbsp; rotate(canvas.frame)<br />&nbsp;&nbsp;&nbsp; rect(-100, -100, 200, 200)<br /><br />canvas.size = 500, 500<br />canvas.run(draw)</pre>
+</div>
+<p>There is no explicit need to initialize&nbsp; a new <span class="inline_code">Canvas</span> object in your script. One has already been created with the best hardware configuration for your system, and stored in a global variable named <span class="inline_code">canvas</span>.</p>
+<pre class="brush: python">canvas = Canvas(width=640, height=480, name="NodeBox for OpenGL", resizable=False) </pre>
+<pre class="brush: python">canvas.name                         # Window title.<br />canvas.layers                       # List of Layer objects.</pre>
+<pre class="brush: python">canvas.append(layer) &nbsp;</pre>
+<pre class="brush: python">canvas.xy                           # Tuple of (x,y)-values.<br />canvas.x                            # Window position from left.<br />canvas.y                            # Window position from top.<br />canvas.width                        # Window width.<br />canvas.height                       # Window height.<br />canvas.size                         # Tuple of (width,height)-values.<br />canvas.fullscreen                   # When True, runs in fullscreen.<br />canvas.screen                       # Screen size: screen.width &amp; screen.height<br />canvas.fps                          # Frames per second.<br />canvas.frame                        # Current animation frame (start = 1).<br />canvas.elapsed                      # Elapsed time since last frame.<br />canvas.mouse                        # Mouse object<br />canvas.keys                         # Keys object.<br />canvas.focus                        # None, or Layer over which mouse hovers.</pre>
+<pre class="brush: python">canvas.setup()<br />canvas.update()<br />canvas.draw()<br />canvas.clear()<br />canvas.run(draw=None, setup=None, update=None, stop=None)<br />canvas.stop()<br />canvas.active                       # True when application is running.</pre>
+<pre class="brush: python">canvas.layer_at(x, y, clipped=False, enabled=False) </pre>
+<pre class="brush: python">canvas.texture<br />canvas.save(path) </pre>
+<ul>
+<li><span class="inline_code">Canvas.setup()</span> is meant to be overridden. It runs once at the start of the animation. <br /><span class="inline_code">Canvas.update()</span> is meant to be overridden. It runs each frame, before <span class="inline_code">draw()</span>. <br /><span class="inline_code">Canvas.draw()</span> is meant be overridden. It runs each frame.<br />Instead of overriding, you can also pass functions to <span class="inline_code">run()</span>.</li>
+<li><span class="inline_code">Canvas.layer_at()</span> returns the topmost (visible) <span class="inline_code">Layer</span> at the given (x,y) position.<br />With <span class="inline_code">clipped=True</span>, no parts of child layers outside the parent's bounds are checked.<br />With <span class="inline_code">enabled=True</span>, only enabled layers are checked.</li>
+</ul>
+<h3>Canvas events</h3>
+<p>Canvas event handlers are fired when input from the mouse or keyboard is detected. For example, if the mouse is moved over the canvas, <span class="inline_code">Canvas.on_mouse_motion()</span> is called. This happens before the current frame is drawn. Events will be passed on to layers that have been appended to the canvas. When the mouse moves over a layer, this layer will have its <span class="inline_code">focus</span> property set to <span class="inline_code">True</span> and the layer will be set as the value for <span class="inline_code">Canvas.focus</span>.</p>
+<pre class="brush: python">canvas.on_mouse_enter(mouse)</pre>
+<pre class="brush: python">canvas.on_mouse_leave(mouse)</pre>
+<pre class="brush: python">canvas.on_mouse_motion(mouse)</pre>
+<pre class="brush: python">canvas.on_mouse_press(mouse)</pre>
+<pre class="brush: python">canvas.on_mouse_release(mouse)</pre>
+<pre class="brush: python">canvas.on_mouse_drag(mouse)</pre>
+<pre class="brush: python">canvas.on_mouse_scroll(mouse)</pre>
+<pre class="brush: python">canvas.on_key_press(keys)</pre>
+<pre class="brush: python">canvas.on_key_release(keys)</pre>
+<pre class="brush: python">canvas.on_move()</pre>
+<pre class="brush: python">canvas.on_resize() </pre>
+<p>The easiest way to set an event handler is to assign your own function that accepts <span class="inline_code">Canvas</span> and <span class="inline_code">Mouse</span> as parameters:</p>
+<div class="example">
+<pre>def on_mouse_drag(canvas, mouse):<br />&nbsp;&nbsp;&nbsp; print "mouse is dragged!"<br /><br />canvas.on_mouse_drag = on_mouse_drag</pre>
+</div>
+<p>Since events are fired before <span class="inline_code">canvas.draw()</span>, no drawing can occur in an event handler. Another way to handle events is to check the mouse and keyboard inside the main <span class="inline_code">draw()</span> function (this is less tidy):</p>
+<div class="example">
+<pre>def draw(canvas):<br />&nbsp;&nbsp;&nbsp; if canvas.mouse.dragged:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "mouse is dragged!"<br /><br />canvas.run(draw) </pre>
+</div>
+<p>The default <span class="inline_code">Canvas.on_key_press()</span> handler responds to the following key combinations:</p>
+<table>
+<tbody>
+<tr>
+<td><span class="smallcaps">Keys</span></td>
+<td><span class="smallcaps">Event</span></td>
+</tr>
+<tr>
+<td><span class="inline_code">ESC </span></td>
+<td>Stops the animation and closes the window.</td>
+</tr>
+<tr>
+<td><span class="inline_code">CTRL+P</span></td>
+<td>Pauses the animation, until <span class="inline_code">CTRL+P</span> is pressed again.</td>
+</tr>
+<tr>
+<td><span class="inline_code">CTRL+S</span></td>
+<td>Saves a PNG-screenshot of the canvas in the current folder.</td>
+</tr>
+</tbody>
+</table>
+<h3>Canvas profiler</h3>
+<p>The <span class="inline_code">canvas.profiler.framerate</span> yields the approximate frames per second of the animation.<br />The <span class="inline_code">canvas.profiler.run()</span> method can be <span class="inline_code">called</span> instead of <span class="inline_code">canvas.run()</span>. It executes a number of <span class="inline_code">frames</span> of animation and returns a string with performance statistics, listing the <span class="inline_code">top</span> functions that take up a lot of time, sorted by <span class="inline_code">SLOWEST</span> or <span class="inline_code">CUMULATIVE</span>.</p>
+<pre class="brush: python">canvas.profiler.framerate</pre>
+<pre class="brush: python">canvas.profiler.run(draw=None, setup=None, update=None, <br />  frames = 100, <br />    sort = CUMULATIVE, <br />     top = 30) </pre>
+<p>&nbsp;</p>
+
+		</div>
+		<div id="sidebar">
+		
+			<div id="search">
+				<form method="get" action="/search/">
+					<input type="text" name="q" value="">
+					<input type="submit" value="Search" >
+				</form>
+			</div>
+		
+		</div>
+
+			<br clear="both">
+		</div>
+		<div id="footer">
+			Copyright &copy; 2007 City in a Bottle. All rights reserved. With support from the Flemish Audiovisual Fund.
+		</div>
+	</div>
+	</div>
+	<img src="/media/img/shadow-bottom.png">
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+	//var so = new SWFObject("/media/swf/banner-small.swf","movie", "900","100", "6" ,"#000000")
+	//so.write("masthead")
+</script>
+
+<script src="https://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+	_uacct = "UA-2297873-2";
+	urchinTracker();
+</script>
+</body>
+</html>

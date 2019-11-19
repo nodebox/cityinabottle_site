@@ -1,0 +1,108 @@
+/**
+ * SyntaxHighlighter
+ * http://alexgorbatchev.com/
+ *
+ * @version
+ * 2.0.278 (February 03 2009)
+ *
+ * @author
+ * Alex Gorbatchev
+ * 
+ * @copyright
+ * Copyright (C) 2004-2009 Alex Gorbatchev.
+ *
+ * Licensed under a GNU Lesser General Public License.
+ * http://creativecommons.org/licenses/LGPL/2.1/
+ *
+ * SyntaxHighlighter is donationware. You are allowed to download, modify and distribute 
+ * the source code in accordance with LGPL 2.1 license, however if you want to use 
+ * SyntaxHighlighter on your site or include it in your product, you must donate.
+ * http://alexgorbatchev.com/wiki/SyntaxHighlighter:Donate
+ */
+
+/* Syntax highlighter replaces leading space with margin-left CSS, but
+   then we can't copy the code correctly: */
+.syntaxhighlighter code.spaces { display: inline !important; }
+.syntaxhighlighter .block {
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+    display: inline !important;
+}
+
+.syntaxhighlighter .plain,
+.syntaxhighlighter .plain a
+{ 
+
+}
+
+.syntaxhighlighter .comments,
+.syntaxhighlighter .comments a
+{ 
+	color: #777;
+}
+
+.syntaxhighlighter .comments_multiline,
+.syntaxhighlighter .comments_multiline a
+{ 
+	color: deeppink;
+}
+
+
+.syntaxhighlighter .string,
+.syntaxhighlighter .string a
+{
+	color: deeppink; 
+}
+
+.syntaxhighlighter .keyword
+{ 
+	color: #262213 !important; font-weight: bold !important;
+}
+
+.syntaxhighlighter .preprocessor 
+{ 
+	color: gray; 
+}
+
+.syntaxhighlighter .variable 
+{ 
+	color: #a70; 
+}
+
+.syntaxhighlighter .value
+{ 
+	color: #555; 
+}
+
+.syntaxhighlighter .functions
+{ 
+	color: #3b5663; 
+}
+
+.syntaxhighlighter .constants
+{ 
+	color: #0066CC; 
+}
+
+.syntaxhighlighter .script
+{ 
+	background-color: yellow !important;
+}
+
+.syntaxhighlighter .color1,
+.syntaxhighlighter .color1 a
+{ 
+	color: #6a83a1; 
+}
+
+.syntaxhighlighter .color2,
+.syntaxhighlighter .color2 a
+{ 
+	color: #273b5e; 
+}
+
+.syntaxhighlighter .color3,
+.syntaxhighlighter .color3 a
+{ 
+	color: red; 
+}
